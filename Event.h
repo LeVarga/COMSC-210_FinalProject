@@ -18,6 +18,12 @@ public:
     static Event parse(const string&);
 };
 
+struct Ticket{
+    string confirmation;
+    string seat;
+    Event event;
+};
+
 class EventController {
     int numEvents = 0;
     DynamicArray<Event> events;
