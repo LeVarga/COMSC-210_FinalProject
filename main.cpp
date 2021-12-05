@@ -86,6 +86,7 @@ public:
     user.firstName = fields[2];
     user.lastName = fields[3];
     user.savedCreditCard = fields[4];
+    // TODO: add ticket data
     return user;
   }
 
@@ -94,7 +95,7 @@ public:
          + to_string(user.password) + ";"
          + user.firstName + ";"
          + user.lastName + ";"
-         + user.savedCreditCard + ";";
+         + user.savedCreditCard + ";"; // TODO: add ticket data
   }
 };
 
@@ -226,22 +227,25 @@ int main() {
              << "      [5] to go back...\n"
              << "Choice --> \n";
         cin >> buf;
+        // TODO: Implement the lists and ticket purchase submenu
         if (buf == "1") {
           cout << "NOT IMPLEMENTED\n";
         } else if (buf == "2") {
-          cout << "NOT IMPLEMENTED\n"; // TODO
+          cout << "NOT IMPLEMENTED\n";
         } else if (buf == "3") {
-          cout << "NOT IMPLEMENTED\n"; // TODO
+          cout << "NOT IMPLEMENTED\n";
         } else if (buf == "4") {
-          cout << "NOT IMPLEMENTED\n"; // TODO
+          cout << "NOT IMPLEMENTED\n";
         } else if (buf == "5") {
           break;
+        } else {
+          cout << "Invalid option, try again.";
         }
       }
     } else if (buf == "2") {
-      cout << "NOT IMPLEMENTED\n"; // TODO
+      cout << "NOT IMPLEMENTED\n"; // TODO: Implement merch purchase menu
     } else if (buf == "3") {
-      cout << "NOT IMPLEMENTED\n"; // TODO
+      cout << "NOT IMPLEMENTED\n"; // TODO: Display user's tickets here
     } else if (buf == "4") {
       userController.logout();
       userController.loginOrSignupPrompt();
