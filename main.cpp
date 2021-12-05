@@ -66,6 +66,7 @@ public:
           eventsAtLocation.push_back(events[i]);
         }
       }
+      return eventsAtLocation;
     }
 };
 
@@ -233,7 +234,7 @@ int main() {
   // main menu
   while (true) {
     cout << "Logged in as " << userController.getCurrentUserFullName() << "\n"
-         << "Enter [1] to find events [NOT IMPLEMENTED]\n"
+         << "Enter [1] to find events\n"
          << "      [2] to purchase merchandise [NOT IMPLEMENTED]\n"
          << "      [3] to view your reservations [NOT IMPLEMENTED]\n"
          << "      [4] to log out\n"
@@ -242,18 +243,30 @@ int main() {
     cin >> buf;
     if (buf == "1") {
       while (true) {
-        cout << "Enter [1] to view events by date [NOT IMPLEMENTED]"
-             << "      [2] to view events by location [NOT IMPLEMENTED]\n"
+        cout << "Enter [1] to view events by date [NOT IMPLEMENTED]\n"
+             << "      [2] to view events by location\n"
              << "      [3] to view events by sport [NOT IMPLEMENTED]\n"
              << "      [4] to view events by teams [NOT IMPLEMENTED]\n"
              << "      [5] to go back...\n"
-             << "Choice --> \n";
+             << "Choice -->";
         cin >> buf;
         // TODO: Implement the lists and ticket purchase submenu
         if (buf == "1") {
           cout << "NOT IMPLEMENTED\n";
         } else if (buf == "2") {
-          cout << "NOT IMPLEMENTED\n";
+          cout << "Locations available: \n";
+          for (const auto& location : eventController.getLocations()) {
+            cout << location << "\n";
+          }
+          cout << "Your choice --> ";
+          cin.ignore();
+          getline(cin, buf);
+          cout << "Events at " << buf << ": \n";
+          for (const auto& event : eventController.getEventsByLocation(buf)) {
+            // TODO: Format output properly
+            cout << event.name << ":\t" << event.teams.first << " v. "
+                 << event.teams.second << "\t" << event.date << "\n";
+          }
         } else if (buf == "3") {
           cout << "NOT IMPLEMENTED\n";
         } else if (buf == "4") {
