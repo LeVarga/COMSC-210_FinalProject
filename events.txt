@@ -1,0 +1,3 @@
+Basketball;05/20/2022;San Francisco;Team A;Team B
+Football;03/11/2022;Los Angeles;Team X;Team Y
+Baseball;07/30/2022;San Francisco;Team C;Team D
