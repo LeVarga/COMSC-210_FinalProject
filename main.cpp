@@ -7,105 +7,11 @@
 #include "DynamicArray.h"
 #include <cstdlib>
 #include <stdio.h>
-#include <set>
-#include <vector>
+#include "Event.h"
 
 using namespace std;
 
 string buf;
-
-struct Event {
-    string sport;
-    string date;
-    string location;
-    pair<string, string> teams;
-
-    static Event parse(const string &line) {
-      istringstream istr(line);
-      string fields[5];
-      string tmp;
-      int i = 0;
-      while (getline(istr, tmp, ';')) {
-        fields[i++] = tmp;
-      }
-      Event event;
-      event.sport = fields[0];
-      event.date = fields[1];
-      event.location = fields[2];
-      event.teams.first = fields[3];
-      event.teams.second = fields[4];
-      return event;
-    }
-};
-
-class EventController {
-    int numEvents = 0;
-    DynamicArray<Event> events;
-
-public:
-    void loadEvents(const string &filename) {
-      ifstream File(filename);
-      while (getline(File, buf)) {
-        events[numEvents] = Event().parse(buf);
-        numEvents++;
-      }
-    }
-
-    set<string> getLocations() {
-      set<string> locations;
-      for (int i = 0; i < numEvents; ++i) {
-        locations.insert(events[i].location);
-      }
-      return locations;
-    }
-
-    vector<Event> getEventsByLocation(const string& location) {
-      vector<Event> eventsAtLocation;
-      for (int i = 0; i < numEvents; ++i) {
-        if (events[i].location == location) {
-          eventsAtLocation.push_back(events[i]);
-        }
-      }
-      return eventsAtLocation;
-    }
-
-    set<string> getSports() {
-      set<string> sports;
-      for (int i = 0; i < numEvents; ++i) {
-        sports.insert(events[i].sport);
-      }
-      return sports;
-    }
-
-    vector<Event> getEventsBySport(const string& sport) {
-      vector<Event> eventsBySport;
-      for (int i = 0; i < numEvents; ++i) {
-        if (events[i].sport == sport) {
-          eventsBySport.push_back(events[i]);
-        }
-      }
-      return eventsBySport;
-    }
-
-    set<string> getAllTeams() {
-      set<string> teams;
-      for (int i = 0; i < numEvents; ++i) {
-        teams.insert(events[i].teams.first);
-        teams.insert(events[i].teams.second);
-      }
-      return teams;
-    }
-
-    vector<Event> getEventsByTeam(const string& team) {
-      vector<Event> eventsWithTeam;
-      for (int i = 0; i < numEvents; ++i) {
-        if (events[i].teams.first == team || events[i].teams.first == team) {
-          eventsWithTeam.push_back(events[i]);
-        }
-      }
-      return eventsWithTeam;
-    }
-};
 
 struct Ticket {
     string confirmation;
@@ -115,7 +21,7 @@ struct Ticket {
 
 struct User {
 private:
-  hash<string> hash;
+  hash<string> hsh;
   size_t password;
 public:
   string username;
@@ -125,11 +31,11 @@ public:
   DynamicArray<Ticket*> purchasedTickets;
 
   const bool checkPassword(const string &password) const {
-    return (hash(password) == this->password);
+    return (hsh(password) == this->password);
   }
 
   void setPassword(const string &password) {
-    this->password = hash(password);
+    this->password = hsh(password);
   }
 
   static User parse(const string &line) {
