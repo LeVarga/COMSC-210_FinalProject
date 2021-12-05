@@ -36,6 +36,17 @@ struct Event {
     }
 };
 
+DynamicArray<Event> loadEvents(const string filename, int& numEvents) {
+  string buf;
+  ifstream File(filename);
+  DynamicArray<Event> events;
+  while (getline(File, buf)) {
+    events[numEvents] = Event().parse(buf);
+    numEvents++;
+  }
+  return events;
+}
+
 struct Ticket {
     string confirmation;
     string seat;
@@ -86,17 +97,6 @@ public:
          + user.savedCreditCard + ";";
   }
 };
-
-DynamicArray<Event> loadEvents(const string filename, int& numEvents) {
-  string buf;
-  ifstream File(filename);
-  DynamicArray<Event> events;
-  while (getline(File, buf)) {
-    events[numEvents] = Event().parse(buf);
-    numEvents++;
-  }
-  return events;
-}
 
 int hashCode(const string& key) {
   int i, result = 0;
@@ -218,7 +218,26 @@ int main() {
          << "Choice --> ";
     cin >> buf;
     if (buf == "1") {
-      cout << "NOT IMPLEMENTED\n"; // TODO
+      while (true) {
+        cout << "Enter [1] to view events by date"
+             << "      [2] to view events by location\n"
+             << "      [3] to view events by sport\n"
+             << "      [4] to view events by teams\n"
+             << "      [5] to go back...\n"
+             << "Choice --> \n";
+        cin >> buf;
+        if (buf == "1") {
+          cout << "NOT IMPLEMENTED\n";
+        } else if (buf == "2") {
+          cout << "NOT IMPLEMENTED\n"; // TODO
+        } else if (buf == "3") {
+          cout << "NOT IMPLEMENTED\n"; // TODO
+        } else if (buf == "4") {
+          cout << "NOT IMPLEMENTED\n"; // TODO
+        } else if (buf == "5") {
+          break;
+        }
+      }
     } else if (buf == "2") {
       cout << "NOT IMPLEMENTED\n"; // TODO
     } else if (buf == "3") {
