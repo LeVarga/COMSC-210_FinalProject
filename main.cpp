@@ -7,6 +7,8 @@
 #include "DynamicArray.h"
 #include <cstdlib>
 #include <stdio.h>
+#include <set>
+#include <vector>
 
 using namespace std;
 
@@ -36,16 +38,36 @@ struct Event {
     }
 };
 
-DynamicArray<Event> loadEvents(const string filename, int& numEvents) {
-  string buf;
-  ifstream File(filename);
-  DynamicArray<Event> events;
-  while (getline(File, buf)) {
-    events[numEvents] = Event().parse(buf);
-    numEvents++;
-  }
-  return events;
-}
+class EventController {
+    int numEvents = 0;
+    DynamicArray<Event> events;
+
+public:
+    void loadEvents(const string &filename) {
+      ifstream File(filename);
+      while (getline(File, buf)) {
+        events[numEvents] = Event().parse(buf);
+        numEvents++;
+      }
+    }
+
+    set<string> getLocations() {
+      set<string> locations;
+      for (int i = 0; i < numEvents; ++i) {
+        locations.insert(events[i].location);
+      }
+      return locations;
+    }
+
+    vector<Event> getEventsByLocation(const string& location) {
+      vector<Event> eventsAtLocation;
+      for (int i = 0; i < numEvents; ++i) {
+        if (events[i].location == location) {
+          eventsAtLocation.push_back(events[i]);
+        }
+      }
+    }
+};
 
 struct Ticket {
     string confirmation;
@@ -199,31 +221,31 @@ public:
 };
 
 UserController userController;
+EventController eventController;
 
 int main() {
-  int numEvents = 0;
   // load data from files
   userController.loadUsers("users.txt");
-  auto events = loadEvents("events.txt", numEvents);
+  eventController.loadEvents("events.txt");
   // initial login prompt
   userController.loginOrSignupPrompt();
 
   // main menu
   while (true) {
     cout << "Logged in as " << userController.getCurrentUserFullName() << "\n"
-         << "Enter [1] to find events\n"
-         << "      [2] to purchase merchandise\n"
-         << "      [3] to view your reservations\n"
+         << "Enter [1] to find events [NOT IMPLEMENTED]\n"
+         << "      [2] to purchase merchandise [NOT IMPLEMENTED]\n"
+         << "      [3] to view your reservations [NOT IMPLEMENTED]\n"
          << "      [4] to log out\n"
          << "      [5] to quit\n"
          << "Choice --> ";
     cin >> buf;
     if (buf == "1") {
       while (true) {
-        cout << "Enter [1] to view events by date"
-             << "      [2] to view events by location\n"
-             << "      [3] to view events by sport\n"
-             << "      [4] to view events by teams\n"
+        cout << "Enter [1] to view events by date [NOT IMPLEMENTED]"
+             << "      [2] to view events by location [NOT IMPLEMENTED]\n"
+             << "      [3] to view events by sport [NOT IMPLEMENTED]\n"
+             << "      [4] to view events by teams [NOT IMPLEMENTED]\n"
              << "      [5] to go back...\n"
              << "Choice --> \n";
         cin >> buf;
