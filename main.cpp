@@ -86,6 +86,25 @@ public:
       }
       return eventsBySport;
     }
+
+    set<string> getAllTeams() {
+      set<string> teams;
+      for (int i = 0; i < numEvents; ++i) {
+        teams.insert(events[i].teams.first);
+        teams.insert(events[i].teams.second);
+      }
+      return teams;
+    }
+
+    vector<Event> getEventsByTeam(const string& team) {
+      vector<Event> eventsWithTeam;
+      for (int i = 0; i < numEvents; ++i) {
+        if (events[i].teams.first == team || events[i].teams.first == team) {
+          eventsWithTeam.push_back(events[i]);
+        }
+      }
+      return eventsWithTeam;
+    }
 };
 
 struct Ticket {
@@ -189,9 +208,9 @@ class UserController {
       }
       users[username].username = username;
       users[username].setPassword(buf);
-      cout << "First sport: ";
+      cout << "First name: ";
       cin >> users[username].firstName;
-      cout << "Last sport: ";
+      cout << "Last name: ";
       cin >> users[username].lastName;
     }
 
@@ -264,7 +283,7 @@ int main() {
         cout << "Enter [1] to view events by date [NOT IMPLEMENTED]\n"
              << "      [2] to view events by location\n"
              << "      [3] to view events by sport\n"
-             << "      [4] to view events by teams [NOT IMPLEMENTED]\n"
+             << "      [4] to view events by team\n"
              << "      [5] to go back...\n"
              << "Choice -->";
         cin >> buf;
@@ -286,7 +305,7 @@ int main() {
                  << event.teams.second << "\t" << event.date << "\n";
           }
         } else if (buf == "3") {
-          cout << "Sports available: \n";
+          cout << "Sports available:\n";
           for (const auto& sport : eventController.getSports()) {
             cout << sport << "\n";
           }
@@ -301,7 +320,20 @@ int main() {
                  << event.location << "\n";
           }
         } else if (buf == "4") {
-          cout << "NOT IMPLEMENTED\n";
+          cout << "Teams found:\n";
+          for (const auto& team : eventController.getAllTeams()) {
+            cout << team << "\n";
+          }
+          cout << "Enter the team you're looking for --> ";
+          cin.ignore();
+          getline(cin, buf);
+          cout << "Games with " << buf << ":\n";
+          for (const auto& event : eventController.getEventsByTeam(buf)) {
+            // TODO: Format output properly
+            cout << event.teams.first << " v. "
+                 << event.teams.second << "\t" << event.date << "\t"
+                 << event.location << " \t(" << event.sport << ")\n";
+          }
         } else if (buf == "5") {
           break;
         } else {
