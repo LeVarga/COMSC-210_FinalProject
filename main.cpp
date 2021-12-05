@@ -15,7 +15,7 @@ using namespace std;
 string buf;
 
 struct Event {
-    string name;
+    string sport;
     string date;
     string location;
     pair<string, string> teams;
@@ -29,7 +29,7 @@ struct Event {
         fields[i++] = tmp;
       }
       Event event;
-      event.name = fields[0];
+      event.sport = fields[0];
       event.date = fields[1];
       event.location = fields[2];
       event.teams.first = fields[3];
@@ -67,6 +67,24 @@ public:
         }
       }
       return eventsAtLocation;
+    }
+
+    set<string> getSports() {
+      set<string> sports;
+      for (int i = 0; i < numEvents; ++i) {
+        sports.insert(events[i].sport);
+      }
+      return sports;
+    }
+
+    vector<Event> getEventsBySport(const string& sport) {
+      vector<Event> eventsBySport;
+      for (int i = 0; i < numEvents; ++i) {
+        if (events[i].sport == sport) {
+          eventsBySport.push_back(events[i]);
+        }
+      }
+      return eventsBySport;
     }
 };
 
@@ -171,9 +189,9 @@ class UserController {
       }
       users[username].username = username;
       users[username].setPassword(buf);
-      cout << "First name: ";
+      cout << "First sport: ";
       cin >> users[username].firstName;
-      cout << "Last name: ";
+      cout << "Last sport: ";
       cin >> users[username].lastName;
     }
 
@@ -245,12 +263,12 @@ int main() {
       while (true) {
         cout << "Enter [1] to view events by date [NOT IMPLEMENTED]\n"
              << "      [2] to view events by location\n"
-             << "      [3] to view events by sport [NOT IMPLEMENTED]\n"
+             << "      [3] to view events by sport\n"
              << "      [4] to view events by teams [NOT IMPLEMENTED]\n"
              << "      [5] to go back...\n"
              << "Choice -->";
         cin >> buf;
-        // TODO: Implement the lists and ticket purchase submenu
+        // TODO: Implement the ticket purchase submenu
         if (buf == "1") {
           cout << "NOT IMPLEMENTED\n";
         } else if (buf == "2") {
@@ -264,11 +282,24 @@ int main() {
           cout << "Events at " << buf << ": \n";
           for (const auto& event : eventController.getEventsByLocation(buf)) {
             // TODO: Format output properly
-            cout << event.name << ":\t" << event.teams.first << " v. "
+            cout << event.sport << ":\t" << event.teams.first << " v. "
                  << event.teams.second << "\t" << event.date << "\n";
           }
         } else if (buf == "3") {
-          cout << "NOT IMPLEMENTED\n";
+          cout << "Sports available: \n";
+          for (const auto& sport : eventController.getSports()) {
+            cout << sport << "\n";
+          }
+          cout << "Your choice --> ";
+          cin.ignore();
+          getline(cin, buf);
+          cout << buf << " games:\n";
+          for (const auto& event : eventController.getEventsBySport(buf)) {
+            // TODO: Format output properly
+            cout << event.teams.first << " v. "
+                 << event.teams.second << "\t" << event.date << "\t"
+                 << event.location << "\n";
+          }
         } else if (buf == "4") {
           cout << "NOT IMPLEMENTED\n";
         } else if (buf == "5") {
