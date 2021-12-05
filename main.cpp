@@ -79,11 +79,6 @@ public:
   }
 
   static string to_str(const User& user) {
-    cout << user.username + ";"
-            + to_string(user.password) + ";"
-            + user.firstName + ";"
-            + user.lastName + ";"
-            + user.savedCreditCard + ";";
     return user.username + ";"
          + to_string(user.password) + ";"
          + user.firstName + ";"
@@ -194,19 +189,50 @@ public:
       }
       File.close();
     }
+    void logout() {
+      currentUser = nullptr;
+    }
+    string getCurrentUserFullName() {
+      return currentUser->firstName + " " + currentUser->lastName;
+    }
 };
 
 UserController userController;
 
 int main() {
   int numEvents = 0;
+  // load data from files
   userController.loadUsers("users.txt");
   auto events = loadEvents("events.txt", numEvents);
-
-
+  // initial login prompt
   userController.loginOrSignupPrompt();
 
-  // main menu goes here
-  
+  // main menu
+  while (true) {
+    cout << "Logged in as " << userController.getCurrentUserFullName() << "\n"
+         << "Enter [1] to find events\n"
+         << "      [2] to purchase merchandise\n"
+         << "      [3] to view your reservations\n"
+         << "      [4] to log out\n"
+         << "      [5] to quit\n"
+         << "Choice --> ";
+    cin >> buf;
+    if (buf == "1") {
+      cout << "NOT IMPLEMENTED\n"; // TODO
+    } else if (buf == "2") {
+      cout << "NOT IMPLEMENTED\n"; // TODO
+    } else if (buf == "3") {
+      cout << "NOT IMPLEMENTED\n"; // TODO
+    } else if (buf == "4") {
+      userController.logout();
+      userController.loginOrSignupPrompt();
+    } else if (buf == "5") {
+      userController.saveToFile("users.txt");
+      exit(0);
+    } else {
+      cout << "Invalid option, try again.";
+    }
+  }
+
   return 0;
 }
