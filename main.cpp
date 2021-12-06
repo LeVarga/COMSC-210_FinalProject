@@ -14,7 +14,7 @@ EventController eventController;
 void loginPrompt();
 void loginOrSignupPrompt();
 void signupPrompt();
-Event* eventPicker(vector<Event> events);
+void eventPicker(vector<Event*>);
 
 int main() {
   // load data from files
@@ -97,21 +97,42 @@ int main() {
   }
 }
 
-Event* eventPicker(vector<Event> events) {
+
+void seatSelectPrompt(Event* event) {
+  cout << "Choose your seat (A1-F99) or X to go back: ";
+  cin >> buf;
+  if (buf == "x" || buf == "X") return;
+  double cost = event->checkSeat(buf);
+  if (cost >= 0) {
+    cout << buf << " is available and costs $" << cost << ". Would you like to reserve it? (Y/N) --> ";
+    cin >> buf;
+    if (buf == "y" || buf == "Y") {
+      // TODO: ISSUE TICKET HERE
+      cout << "NOT IMPLEMENTED\n";
+    } else {
+      seatSelectPrompt(event);
+    }
+  } else {
+    cout << buf << " is unavailable. Try a different one.\n";
+    seatSelectPrompt(event);
+  }
+}
+
+void eventPicker(vector<Event*> events) {
   for (int i = 0; i < events.size(); ++i) {
     // TODO: Format output better
-    cout << "[" << i + 1 << "] " << events[i].sport << ":\t"
-         << events[i].teams.first << " v. " << events[i].teams.second << "\t"
-         << events[i].location << "\t" << events[i].date << "\n";
+    cout << "[" << i + 1 << "] " << events[i]->sport << ":\t"
+         << events[i]->teams.first << " v. " << events[i]->teams.second << "\t"
+         << events[i]->location << "\t" << events[i]->date << "\n";
   }
   cout << "Enter the number of an event to buy a ticket, or X to go back: ";
   cin >> buf;
-  if (buf == "x" || buf == "X") return nullptr;
+  if (buf == "x" || buf == "X") return;
   if (atoi(buf.c_str()) <= events.size() && atoi(buf.c_str()) > 0) {
-    return &events[atoi(buf.c_str()) - 1];
+    seatSelectPrompt(events[atoi(buf.c_str()) - 1]);
   } else {
     cout << "Invalid choice, try again.";
-    return eventPicker(events);
+    eventPicker(events);
   }
 }
 
