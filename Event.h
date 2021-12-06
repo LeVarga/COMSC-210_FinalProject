@@ -14,8 +14,12 @@ struct Event {
     string date;
     string location;
     pair<string, string> teams;
-public:
+    double baseTicketPrice = 10;
+    double checkSeat(const string);
     static Event parse(const string&);
+
+private:
+    vector<string> seatsTaken;
 };
 
 struct Ticket{
@@ -30,10 +34,10 @@ class EventController {
 public:
     void loadEvents(const string&);
     set<string> getLocations();
-    vector<Event> getEventsByLocation(const string&);
+    vector<Event*> getEventsByLocation(const string&);
     set<string> getSports();
-    vector<Event> getEventsBySport(const string&);
+    vector<Event*> getEventsBySport(const string&);
     set<string> getAllTeams();
-    vector<Event> getEventsByTeam(const string& team);
+    vector<Event*> getEventsByTeam(const string& team);
 };
 #endif //EVENT_H
