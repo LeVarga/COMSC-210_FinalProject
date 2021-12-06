@@ -97,7 +97,6 @@ int main() {
   }
 }
 
-
 void seatSelectPrompt(Event* event) {
   cout << "Choose your seat (A1-F99) or X to go back: ";
   cin >> buf;
@@ -145,10 +144,10 @@ void signupPrompt() {
     cin >> username;
   }
   cout << "Password (8+ characters): ";
-  cin >> buf;
-  while (!userController.checkPassword(buf)) {
+  cin >> password;
+  while (!userController.checkPassword(password)) {
     cout << "Password too short, try again: ";
-    cin >> buf;
+    cin >> password;
   }
   cout << "First name: ";
   cin >> fn;

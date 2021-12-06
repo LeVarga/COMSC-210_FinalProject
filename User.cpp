@@ -60,7 +60,7 @@ bool UserController::checkPassword(string pass) {
 
 void UserController::addUser(string username, string pass, string fn, string ln) {
   users[username].username = username;
-  users[username].setPassword(buf);
+  users[username].setPassword(pass);
   users[username].firstName = fn;
   users[username].lastName = ln;
 }
