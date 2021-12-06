@@ -14,6 +14,7 @@ EventController eventController;
 void loginPrompt();
 void loginOrSignupPrompt();
 void signupPrompt();
+Event* eventPicker(vector<Event> events);
 
 int main() {
   // load data from files
@@ -42,7 +43,6 @@ int main() {
              << "      [5] to go back...\n"
              << "Choice -->";
         cin >> buf;
-        // TODO: Implement the ticket purchase submenu
         if (buf == "1") {
           cout << "NOT IMPLEMENTED\n";
         } else if (buf == "2") {
@@ -53,12 +53,8 @@ int main() {
           cout << "Your choice --> ";
           cin.ignore();
           getline(cin, buf);
-          cout << "Events at " << buf << ": \n";
-          for (const auto &event : eventController.getEventsByLocation(buf)) {
-            // TODO: Format output properly
-            cout << event.sport << ":\t" << event.teams.first << " v. "
-                 << event.teams.second << "\t" << event.date << "\n";
-          }
+          cout << "Events in " << buf << ":\n";
+          eventPicker(eventController.getEventsByLocation(buf));
         } else if (buf == "3") {
           cout << "Sports available:\n";
           for (const auto &sport : eventController.getSports()) {
@@ -68,12 +64,7 @@ int main() {
           cin.ignore();
           getline(cin, buf);
           cout << buf << " games:\n";
-          for (const auto &event : eventController.getEventsBySport(buf)) {
-            // TODO: Format output properly
-            cout << event.teams.first << " v. "
-                 << event.teams.second << "\t" << event.date << "\t"
-                 << event.location << "\n";
-          }
+          eventPicker(eventController.getEventsBySport(buf));
         } else if (buf == "4") {
           cout << "Teams found:\n";
           for (const auto &team : eventController.getAllTeams()) {
@@ -83,16 +74,11 @@ int main() {
           cin.ignore();
           getline(cin, buf);
           cout << "Games with " << buf << ":\n";
-          for (const auto &event : eventController.getEventsByTeam(buf)) {
-            // TODO: Format output properly
-            cout << event.teams.first << " v. "
-                 << event.teams.second << "\t" << event.date << "\t"
-                 << event.location << " \t(" << event.sport << ")\n";
-          }
+          eventPicker(eventController.getEventsByTeam(buf));
         } else if (buf == "5") {
           break;
         } else {
-          cout << "Invalid option, try again.";
+          cout << "Invalid option, try again.\n";
         }
       }
     } else if (buf == "2") {
@@ -106,12 +92,27 @@ int main() {
       userController.saveToFile("users.txt");
       exit(0);
     } else {
-      cout << "Invalid option, try again.";
+      cout << "Invalid option, try again.\n";
     }
   }
+}
 
-
-  return 0;
+Event* eventPicker(vector<Event> events) {
+  for (int i = 0; i < events.size(); ++i) {
+    // TODO: Format output better
+    cout << "[" << i + 1 << "] " << events[i].sport << ":\t"
+         << events[i].teams.first << " v. " << events[i].teams.second << "\t"
+         << events[i].location << "\t" << events[i].date << "\n";
+  }
+  cout << "Enter the number of an event to buy a ticket, or X to go back: ";
+  cin >> buf;
+  if (buf == "x" || buf == "X") return nullptr;
+  if (atoi(buf.c_str()) <= events.size() && atoi(buf.c_str()) > 0) {
+    return &events[atoi(buf.c_str()) - 1];
+  } else {
+    cout << "Invalid choice, try again.";
+    return eventPicker(events);
+  }
 }
 
 void signupPrompt() {
