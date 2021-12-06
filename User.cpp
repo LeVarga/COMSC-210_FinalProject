@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <sstream>
 #include <fstream>
 #include "User.h"
@@ -63,6 +64,7 @@ void UserController::addUser(string username, string pass, string fn, string ln)
   users[username].setPassword(pass);
   users[username].firstName = fn;
   users[username].lastName = ln;
+  users[username].accountBalance = 0;
 }
 
 bool UserController::login(string user, string pass) {
@@ -97,4 +99,28 @@ void UserController::logout() {
 
 string UserController::getCurrentUserFullName() const {
   return currentUser->firstName + " " + currentUser->lastName;
+}
+
+bool UserController::purchaseTicket(Ticket* ticket, double price) {
+  if (currentUser->accountBalance < price)
+    return false;
+  currentUser->purchasedTickets.push_back(ticket);
+  currentUser->accountBalance -= price;
+  return true;
+}
+
+bool UserController::checkCard() {
+  return (currentUser->savedCreditCard.size() == 16);
+}
+
+void UserController::addCreditCard(string cardNum) {
+  currentUser->savedCreditCard = cardNum;
+}
+
+void UserController::addBalance(double amount) {
+  currentUser->accountBalance += amount;
+}
+
+double UserController::getBalance() const {
+  return currentUser->accountBalance;
 }

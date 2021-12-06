@@ -2,6 +2,7 @@
 #define USER_H
 
 #include <string>
+#include <vector>
 #include <math.h>
 
 #include "DynamicArray.h"
@@ -19,7 +20,8 @@ public:
     string firstName;
     string lastName;
     string savedCreditCard;
-    DynamicArray<Ticket*> purchasedTickets;
+    double accountBalance;
+    vector<Ticket*> purchasedTickets;
 
     const bool checkPassword(const string&) const;
     void setPassword(const string&);
@@ -41,6 +43,11 @@ public:
     void saveToFile(string);
     void logout();
     string getCurrentUserFullName() const;
+    bool purchaseTicket(Ticket*, double);
+    bool checkCard();
+    void addCreditCard(string);
+    void addBalance(double);
+    double getBalance() const;
 };
 
 

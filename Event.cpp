@@ -1,6 +1,8 @@
 #include <fstream>
 #include <sstream>
 #include <math.h>
+#include <cmath>
+#include <ctime>
 
 #include "Event.h"
 
@@ -19,13 +21,13 @@ double Event::checkSeat(string seat) {
 
     // seat pricing logic
     switch (letter) {
-      case 'A': seatPrice *= 5; break;
-      case 'B': seatPrice *= 2.5; break;
-      case 'C': seatPrice *= 2; break;
-      case 'D': seatPrice *= 1.5; break;
-      case 'E': seatPrice *= 1.15; break;
-      case 'F': break;
-      default: return -1;
+    case 'A': seatPrice *= 5; break;
+    case 'B': seatPrice *= 2.5; break;
+    case 'C': seatPrice *= 2; break;
+    case 'D': seatPrice *= 1.5; break;
+    case 'E': seatPrice *= 1.15; break;
+    case 'F': break;
+    default: return -1;
     }
     seatPrice *= pow(99 - number + 1, 0.1);
     return seatPrice;
@@ -67,11 +69,11 @@ set<string> EventController::getLocations() {
   return locations;
 }
 
-vector<Event*> EventController::getEventsByLocation(const string& location) {
-  vector<Event*> eventsAtLocation;
+vector<Event> EventController::getEventsByLocation(const string& location) {
+  vector<Event> eventsAtLocation;
   for (int i = 0; i < numEvents; ++i) {
     if (events[i].location == location) {
-      eventsAtLocation.push_back(&events[i]);
+      eventsAtLocation.push_back(events[i]);
     }
   }
   return eventsAtLocation;
@@ -85,11 +87,11 @@ set<string> EventController::getSports() {
   return sports;
 }
 
-vector<Event*> EventController::getEventsBySport(const string& sport) {
-  vector<Event*> eventsBySport;
+vector<Event> EventController::getEventsBySport(const string& sport) {
+  vector<Event> eventsBySport;
   for (int i = 0; i < numEvents; ++i) {
     if (events[i].sport == sport) {
-      eventsBySport.push_back(&events[i]);
+      eventsBySport.push_back(events[i]);
     }
   }
   return eventsBySport;
@@ -104,12 +106,30 @@ set<string> EventController::getAllTeams() {
   return teams;
 }
 
-vector<Event*> EventController::getEventsByTeam(const string& team) {
-  vector<Event*> eventsWithTeam;
+vector<Event> EventController::getEventsByTeam(const string& team) {
+  vector<Event> eventsWithTeam;
   for (int i = 0; i < numEvents; ++i) {
     if (events[i].teams.first == team || events[i].teams.first == team) {
-      eventsWithTeam.push_back(&events[i]);
+      eventsWithTeam.push_back(events[i]);
     }
   }
   return eventsWithTeam;
+}
+
+Ticket* EventController::createTicket(Event* event, string seat)
+{
+  srand(time(0));
+  rand();
+  Ticket* tempTicket = new Ticket;
+  const char alphanumBank[] = "1234567890" "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz";
+  string codeGen = "";
+  for (int i = 0; i < 16; i++)
+  {
+    codeGen += alphanumBank[rand() % (sizeof(alphanumBank) - 1)];
+  }
+  tempTicket->confirmation = codeGen;
+  tempTicket->seat = seat;
+  tempTicket->event = *event;
+
+  return tempTicket;
 }
