@@ -5,6 +5,7 @@
 #include "User.h"
 #include "Ticket.h"
 #include "Merch.h"
+#include "HashTable.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ void signupPrompt();
 void addBalance();
 void seatSelectPrompt(Event*);
 void purchaseMerch();
+void buildMonths(string*);
 Event* eventPicker(vector<Event*>);
 Merch* merchPicker(vector<Merch*>);
 Merch* addMerch(Merch*);
@@ -36,6 +38,10 @@ int main() {
   // initial login prompt
   loginOrSignupPrompt();
 
+  string months[12];
+  buildMonths(months);
+
+
   // main menu
   while (true) {
     cout << "Logged in as " << userController.getCurrentUserFullName() << "\n"
@@ -48,7 +54,7 @@ int main() {
     getline(cin, buf);
     if (buf == "1") {
       while (true) {
-        cout << "Enter [1] to view events by date [NOT IMPLEMENTED]\n"
+        cout << "Enter [1] to view events by date\n"
              << "      [2] to view events by location\n"
              << "      [3] to view events by sport\n"
              << "      [4] to view events by team\n"
@@ -56,7 +62,15 @@ int main() {
              << "Choice --> ";
         getline(cin, buf);
         if (buf == "1") {
-          cout << "NOT IMPLEMENTED\n";
+          cout << "Months available: \n";
+          for (const auto& dates : eventController.getDates()) {
+            cout << months[atoi(dates.c_str()) + 1] << "\n";
+          }
+          cout << "Your choice --> ";
+          getline(cin, buf);
+          cout << "Events in " << buf << ":\n";
+          Event* ev = eventPicker(eventController.getEventsByDate(buf));
+          seatSelectPrompt(ev);
         } else if (buf == "2") {
           cout << "Locations available: \n";
           for (const auto &location : eventController.getLocations()) {
@@ -411,4 +425,20 @@ void loginOrSignupPrompt() {
     cout << "Invalid option, try again.\n";
     loginOrSignupPrompt();
   }
+}
+
+void buildMonths(string* months)
+{
+  months[0] = "January";
+  months[1] = "February";
+  months[2] = "March";
+  months[3] = "April";
+  months[4] = "May";
+  months[5] = "June";
+  months[6] = "July";
+  months[7] = "August";
+  months[8] = "September";
+  months[9] = "October";
+  months[10] = "November";
+  months[11] = "December";
 }

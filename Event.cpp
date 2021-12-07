@@ -1,6 +1,7 @@
 #include <fstream>
 #include <sstream>
 #include <math.h>
+#include <map>
 
 #include "Event.h"
 
@@ -58,6 +59,41 @@ void EventController::loadEvents(const string &filename) {
     events[numEvents] = Event::parse(buf);
     numEvents++;
   }
+}
+
+set<string> EventController::getDates() {
+  set<string> dates;
+  for (int i = 0; i < numEvents; i++) {
+    string month(events[i].date, 0, 2);
+    dates.insert(month);
+  }
+  return dates;
+}
+
+vector<Event*> EventController::getEventsByDate(const string& month) {
+  map<string, int> monthTable
+  {
+    {"January", 1},
+    {"February", 2},
+    {"March", 3},
+    {"April", 4},
+    {"May", 5},
+    {"June", 6},
+    {"July", 7},
+    {"August", 8},
+    {"September", 9},
+    {"October", 10},
+    {"November", 11},
+    {"December", 12}
+  };
+
+  vector<Event*> eventsDuringMonth;
+  for (int i = 0; i < numEvents; i++) {
+    string monthNum(events[i].date, 0, 2);
+    if (atoi(monthNum.c_str()) == monthTable[month])
+      eventsDuringMonth.push_back(&events[i]);
+  }
+  return eventsDuringMonth;
 }
 
 set<string> EventController::getLocations() {

@@ -25,6 +25,8 @@ class EventController {
     DynamicArray<Event> events;
 public:
     void loadEvents(const string&);
+    set<string> getDates();
+    vector<Event*> getEventsByDate(const string&);
     set<string> getLocations();
     vector<Event*> getEventsByLocation(const string&);
     set<string> getSports();
@@ -32,5 +34,6 @@ public:
     set<string> getAllTeams();
     vector<Event*> getEventsByTeam(const string& team);
     Event* getEventWithID(const int& id);
+
 };
 #endif //EVENT_H
