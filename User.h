@@ -5,8 +5,9 @@
 #include <vector>
 #include <math.h>
 
-#include "DynamicArray.h"
 #include "Event.h"
+#include "Merch.h"
+#include "Queue.h"
 #include "HashTable.h"
 
 using namespace std;
@@ -20,6 +21,7 @@ public:
     string firstName;
     string lastName;
     string savedCreditCard;
+    Queue<Merch*> cart;
     double accountBalance;
 
     const bool checkPassword(const string&) const;
@@ -48,6 +50,11 @@ public:
     void addCreditCard(string);
     void addBalance(double);
     double getBalance() const;
+    void addToCart(Merch*);
+    bool cartIsEmpty();
+    void clearCart();
+    Queue<Merch*> currentCart();
+
 };
 
 

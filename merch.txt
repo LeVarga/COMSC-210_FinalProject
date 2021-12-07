@@ -1,0 +1,5 @@
+Team A;Jersey;39.99
+Team B;Hat;15.99
+Team B;Basketball Shoes;119.99
+Team C;Baseball;19.99
+Team D;Bobblehead;49.99

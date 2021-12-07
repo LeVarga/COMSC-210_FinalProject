@@ -129,3 +129,22 @@ void UserController::addBalance(double amount) {
 double UserController::getBalance() const {
   return currentUser->accountBalance;
 }
+
+void UserController::addToCart(Merch* merchandise) {
+  if (merchandise == nullptr)
+    return;
+  currentUser->cart.push(merchandise);
+}
+
+bool UserController::cartIsEmpty() {
+  return currentUser->cart.empty();
+}
+
+void UserController::clearCart() {
+  while (!currentUser->cart.empty())
+    currentUser->cart.pop();
+}
+
+Queue<Merch*> UserController::currentCart() {
+  return currentUser->cart;
+}

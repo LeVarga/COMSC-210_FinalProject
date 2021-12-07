@@ -4,6 +4,7 @@
 #include "Event.h"
 #include "User.h"
 #include "Ticket.h"
+#include "Merch.h"
 
 using namespace std;
 
@@ -12,19 +13,24 @@ string buf;
 UserController userController;
 EventController eventController;
 TicketController ticketController;
+MerchController merchController;
 
 void loginPrompt();
 void loginOrSignupPrompt();
 void signupPrompt();
 void addBalance();
 void seatSelectPrompt(Event*);
-Event* eventPicker(vector<Event*> events);
+Event* eventPicker(vector<Event*>);
+Merch* merchPicker(vector<Merch*>);
+Merch* addMerch(Merch*);
+void purchaseMerch();
 
 int main() {
   // load data from files
   userController.loadUsers("users.txt");
   eventController.loadEvents("events.txt");
   ticketController.loadTickets("tickets.txt", eventController);
+  merchController.loadMerch("merch.txt");
 
   // initial login prompt
   loginOrSignupPrompt();
@@ -33,7 +39,7 @@ int main() {
   while (true) {
     cout << "Logged in as " << userController.getCurrentUserFullName() << "\n"
          << "Enter [1] to find events\n"
-         << "      [2] to purchase merchandise [NOT IMPLEMENTED]\n"
+         << "      [2] to purchase merchandise\n"
          << "      [3] to view your reservations\n"
          << "      [4] to log out\n"
          << "      [5] to quit\n"
@@ -49,7 +55,6 @@ int main() {
              << "Choice -->";
         getline(cin, buf);
         if (buf == "1") {
-          // TODO: Implement this...
           cout << "NOT IMPLEMENTED\n";
         } else if (buf == "2") {
           cout << "Locations available: \n";
@@ -88,9 +93,40 @@ int main() {
         }
       }
     } else if (buf == "2") {
-      cout << "NOT IMPLEMENTED\n"; // TODO: Implement merch purchase menu
+      while (true) {
+        cout << "Enter [1] to view merch by team\n"
+             << "      [2] to go back...\n"
+             << "Choice --> ";
+        getline(cin, buf);
+        if (buf == "1")
+        {
+          while (true)
+          {
+            cout << "\nTeams found:\n";
+            for (const auto& team : eventController.getAllTeams()) {
+              cout << team << "\n";
+            }
+            cout << "Enter the team you're looking for, or press X to check out/cancel --> ";
+            getline(cin, buf);
+            if (buf == "x" || buf == "X") break;
+            cout << "Merchandise for " << buf << ":\n";
+            Merch* mrc = merchPicker(merchController.getMerchByTeam(buf));
+            userController.addToCart(addMerch(mrc));
+          }
+          if (!userController.cartIsEmpty())
+          {
+            purchaseMerch();
+            userController.clearCart();
+          }
+        }
+        else if(buf == "2")
+          break;
+        else
+        {
+          cout << "Invalid option, try again.\n";
+        }
+      }
     } else if (buf == "3") {
-      // TODO: Add concession ordering
       cout << "Your tickets: \n";
       for (const auto& tick : ticketController.getTicketsByUsername(userController.getCurrentUsername())) {
         const Event* event = tick->event;
@@ -146,8 +182,81 @@ void seatSelectPrompt(Event* event) {
   }
 }
 
+void purchaseMerch() 
+{
+  double total = 0;
+  for (Queue<Merch*> cart = userController.currentCart(); !cart.empty(); cart.pop())
+  {
+    cout << cart.front()->team << " " << cart.front()->type << ": $" << cart.front()->cost << "\n";
+    total += cart.front()->cost;
+  }
+  cout << "Total cost: $" << total << ". Confirm checkout? (Y/N) --> ";
+  getline(cin, buf);
+  if (buf == "y" || buf == "Y")
+  {
+    bool check = true;
+    while (!userController.purchase(total))
+    {
+      cout << "You seem to have an insufficient balance in your account. Would you like to add more? (Y/N) --> ";
+      getline(cin, buf);
+      if (buf == "y" || buf == "Y")
+        addBalance();
+      if (buf == "n" || buf == "N")
+      {
+        check = false;
+        break;
+      }
+      else {
+        cout << "Invalid input. Try again.\n";
+        purchaseMerch();
+      }
+    }
+    if (check)
+    {
+      string conf = merchController.merchConfCode();
+      cout << "Merch successfully purchased. Make sure to show the " <<
+        "confirmation code " << conf << " at the merch booth.\n";
+      return;
+    }
+  }
+  else if (buf == "n" || buf == "N")
+    return;
+  else
+  {
+    cout << "Invalid input. Try again.\n";
+    purchaseMerch();
+  }
+
+}
+
+Merch* addMerch(Merch* merch)
+{
+  if (merch == nullptr) {
+    return nullptr;
+  }
+  cout << "Please confirm: you are about to add a " << merch->type << " from " << merch->team << " for " << merch->cost << " to your cart\n";
+  cout << "Confirm? (Y/N) --> ";
+  getline(cin, buf);
+  if (buf == "y" || buf == "Y")
+  {    
+    cout << "Successfully added to cart.\n";
+    return merch;
+  }
+  else if (buf == "n" || buf == "N")
+  {
+    
+    cout << "Purchase cancelled.\n";
+    return nullptr;
+  }
+  else
+  {
+    cout << "Invalid input. Try again.\n";
+    addMerch(merch);
+  }
+}
+
 Event* eventPicker(vector<Event*> events) {
-  for (int i = 0; i < events.size(); ++i) {
+  for (int i = 0; i < (int)events.size(); ++i) {
     // TODO: Format output better
     cout << "[" << i + 1 << "] " << events[i]->sport << ":\t"
          << events[i]->teams.first << " v. " << events[i]->teams.second << "\t"
@@ -156,7 +265,7 @@ Event* eventPicker(vector<Event*> events) {
   cout << "Enter the number of an event to buy a ticket, or X to go back: ";
   getline(cin, buf);
   if (buf == "x" || buf == "X") return nullptr;
-  if (atoi(buf.c_str()) <= events.size() && atoi(buf.c_str()) > 0) {
+  if (atoi(buf.c_str()) <= (int)events.size() && atoi(buf.c_str()) > 0) {
     return events[atoi(buf.c_str()) - 1];
   } else {
     cout << "Invalid choice, try again.\n";
@@ -164,54 +273,89 @@ Event* eventPicker(vector<Event*> events) {
   }
 }
 
-void addBalance() {
+Merch* merchPicker(vector<Merch*> merch)
+{
+  if ((int)merch.size() > 0)
+  {
+    for (int i = 0; i < (int)merch.size(); i++) {
+      cout << "[" << i + 1 << "] " << merch[i]->type << ": $"
+        << merch[i]->cost << "\n";
+    }
+    cout << "Enter the number of the merch you'd like to buy, or X to go back: ";
+    getline(cin, buf);
+    if (buf == "x" || buf == "X")
+    {    
+      return nullptr;
+    }
+    if (atoi(buf.c_str()) <= (int)merch.size() && atoi(buf.c_str()) > 0) {
+      return merch[atoi(buf.c_str()) - 1];
+    }
+    else {
+      cout << "Invalid choice, try again.\n";
+      return merchPicker(merch);
+    }
+  }
+  else
+  {
+    cout << "This team has no available merchandise.\n";
+    return nullptr;
+  }
+}
+
+void addBalance()
+{
   cout << "Do you have a card registered? (Y/N) --> ";
   getline(cin, buf);
-  if (buf == "n" || buf == "N") {
+  if (buf == "n" || buf == "N")
+  {
     cout << "Would you like to register one? (Y/N) --> ";
     getline(cin, buf);
-    if (buf == "y" || buf == "Y") {
+    if (buf == "y" || buf == "Y")
+    {
       cout << "Please enter the 16-digit number of your card: ";
       getline(cin, buf);
       userController.addCreditCard(buf);
-      while (!userController.checkCard()) {
+      while (!userController.checkCard())
+      {
         cout << "Card number not 16-digits, try again: ";
         getline(cin, buf);
         userController.addCreditCard(buf);
       }
+
       cout << "Credit card successfully added to account.\n";
     }
     else if (buf == "n" || buf == "N")
       return; 
   }
-  if (!userController.checkCard()) {
+  if (!userController.checkCard())
+  {
     cout << "No valid credit card on file, try again.\n";
     addBalance();
   }
   cout << "How much would you like to add to your balance? Enter: ";
   getline(cin, buf);
-  userController.addBalance(atof(buf.c_str()));
-  cout << "$" << atof(buf.c_str()) << " successfully added to your account.\nCurrent total: $" << userController.getBalance() << "\n\n";
+  userController.addBalance(atoi(buf.c_str()));
+  cout << "$" << atoi(buf.c_str()) << " successfully added to your account.\nCurrent total: $" << userController.getBalance() << "\n\n";
 }
 
 void signupPrompt() {
   string username, password, fn, ln;
   cout << "Username (4+ characters): ";
-  getline(cin, username);
+  cin >> username;
   while (!userController.checkUsername(username)) {
     cout << "Username is too short or already taken, try again: ";
-    getline(cin, username);
+    cin >> username;
   }
   cout << "Password (8+ characters): ";
-  getline(cin, password);
+  cin >> password;
   while (!userController.checkPassword(password)) {
     cout << "Password too short, try again: ";
-    getline(cin, password);
+    cin >> password;
   }
   cout << "First name: ";
-  getline(cin, fn);
+  cin >> fn;
   cout << "Last name: ";
-  getline(cin, ln);
+  cin >> ln;
   userController.addUser(username, password, fn, ln);
   userController.login(username, password);
 }
@@ -219,7 +363,7 @@ void signupPrompt() {
 void loginPrompt() {
   string username;
   cout << "Enter your username or X to go back: ";
-  getline(cin, username);
+  cin >> username;
   if (username == "X" || username == "x") loginOrSignupPrompt();
   else {
     cout << "Enter your password: ";
