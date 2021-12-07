@@ -79,7 +79,7 @@ bool UserController::login(string user, string pass) {
 void UserController::loadUsers(string filename) {
   ifstream File(filename);
   while (getline(File, buf)) {
-    User user = User().parse(buf);
+    User user = User::parse(buf);
     users[user.username] = user;
   }
 }

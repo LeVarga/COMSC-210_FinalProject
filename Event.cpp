@@ -55,7 +55,7 @@ void EventController::loadEvents(const string &filename) {
   ifstream File(filename);
   string buf;
   while (getline(File, buf)) {
-    events[numEvents] = Event().parse(buf);
+    events[numEvents] = Event::parse(buf);
     numEvents++;
   }
 }

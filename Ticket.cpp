@@ -34,7 +34,7 @@ void TicketController::loadTickets(const string &filename, EventController& ec) 
   ifstream File(filename);
   string buf;
   while (getline(File, buf)) {
-    tickets[numTickets] = Ticket().parse(buf, ec);
+    tickets[numTickets] = Ticket::parse(buf, ec);
     numTickets++;
   }
 }
