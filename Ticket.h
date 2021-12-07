@@ -7,9 +7,9 @@ using namespace std;
 struct Ticket {
     string confirmation;
     string seat;
-    int eventID;
+    Event* event;
     string username;
-    static Ticket parse(const string&);
+    static Ticket parse(const string&, EventController&);
     string to_str();
 };
 
@@ -17,10 +17,10 @@ class TicketController {
     int numTickets = 0;
     DynamicArray<Ticket> tickets;
 public:
-    void loadTickets(const string&);
-    vector<string> getSeatsTaken(const Event&);
+    void loadTickets(const string&, EventController&);
+    vector<string> getSeatsTaken(const Event*);
     vector<Ticket*> getTicketsByUsername(const string&);
-    string issueTicket(const Event&, const string, const string);
+    string issueTicket(Event&, const string, const string);
     void saveToFile(const string&);
 };
 #endif //TICKET_H

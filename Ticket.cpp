@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Ticket Ticket::parse(const string &line) {
+Ticket Ticket::parse(const string &line, EventController& ec) {
   istringstream istr(line);
   string fields[4];
   string tmp;
@@ -18,7 +18,7 @@ Ticket Ticket::parse(const string &line) {
   Ticket ticket;
   ticket.confirmation = fields[0];
   ticket.username = fields[1];
-  ticket.eventID = atoi(fields[2].c_str());
+  ticket.event = ec.getEventWithID(atoi(fields[2].c_str()));
   ticket.seat = fields[3];
   return ticket;
 }
@@ -26,20 +26,20 @@ Ticket Ticket::parse(const string &line) {
 string Ticket::to_str() {
   return confirmation + ";"
          + username + ";"
-         + to_string(eventID) + ";"
+         + to_string(event->id) + ";"
          + seat + ";";
 }
 
-void TicketController::loadTickets(const string &filename) {
+void TicketController::loadTickets(const string &filename, EventController& ec) {
   ifstream File(filename);
   string buf;
   while (getline(File, buf)) {
-    tickets[numTickets] = Ticket().parse(buf);
+    tickets[numTickets] = Ticket().parse(buf, ec);
     numTickets++;
   }
 }
 
-string TicketController::issueTicket(const Event& event, string username, string seat) {
+string TicketController::issueTicket(Event& event, string username, string seat) {
   srand(time(0));
   rand();
   Ticket tempTicket = Ticket();
@@ -52,16 +52,16 @@ string TicketController::issueTicket(const Event& event, string username, string
   tempTicket.confirmation = codeGen;
   tempTicket.seat = seat;
   tempTicket.username = username;
-  tempTicket.eventID = event.id;
+  tempTicket.event = &event;
   tickets[numTickets] = tempTicket;
   numTickets++;
   return codeGen;
 }
 
-vector<string> TicketController::getSeatsTaken(const Event& event) {
+vector<string> TicketController::getSeatsTaken(const Event* event) {
   vector<string> tmp;
   for (int i = 0; i < numTickets; ++i) {
-    if (tickets[i].eventID == event.id) tmp.push_back(tickets[i].seat);
+    if (tickets[i].event == event) tmp.push_back(tickets[i].seat);
   }
   return tmp;
 }

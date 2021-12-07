@@ -24,7 +24,7 @@ int main() {
   // load data from files
   userController.loadUsers("users.txt");
   eventController.loadEvents("events.txt");
-  ticketController.loadTickets("tickets.txt");
+  ticketController.loadTickets("tickets.txt", eventController);
 
   // initial login prompt
   loginOrSignupPrompt();
@@ -34,7 +34,7 @@ int main() {
     cout << "Logged in as " << userController.getCurrentUserFullName() << "\n"
          << "Enter [1] to find events\n"
          << "      [2] to purchase merchandise [NOT IMPLEMENTED]\n"
-         << "      [3] to view your reservations [NOT IMPLEMENTED]\n"
+         << "      [3] to view your reservations\n"
          << "      [4] to log out\n"
          << "      [5] to quit\n"
          << "Choice --> ";
@@ -92,7 +92,15 @@ int main() {
     } else if (buf == "2") {
       cout << "NOT IMPLEMENTED\n"; // TODO: Implement merch purchase menu
     } else if (buf == "3") {
-      cout << "NOT IMPLEMENTED\n"; // TODO: Display user's tickets here
+      cout << "Your tickets: \n";
+      for (const auto& tick : ticketController.getTicketsByUsername(userController.getCurrentUsername())) {
+        const Event* event = tick->event;
+        cout << event->sport << ":\t"
+             << event->teams.first << " v. " << event->teams.second << "\t"
+             << event->location << "\t" << event->date
+             << "\tSeat " << tick->seat << "\tConfirmation: "
+             << tick->confirmation << "\n";
+      }
     } else if (buf == "4") {
       userController.logout();
       loginPrompt();
@@ -111,7 +119,7 @@ void seatSelectPrompt(Event* event) {
   cin >> buf;
   if (buf == "x" || buf == "X") return;
   string seat = buf;
-  double cost = event->checkSeat(seat);
+  double cost = event->checkSeat(seat, ticketController.getSeatsTaken(event));
   if (cost >= 0) {
     cout << buf << " is available and costs $" << cost << ". Would you like to reserve it? (Y/N) --> ";
     cin >> buf;

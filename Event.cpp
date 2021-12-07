@@ -1,12 +1,10 @@
 #include <fstream>
 #include <sstream>
 #include <math.h>
-#include <cmath>
-#include <ctime>
 
 #include "Event.h"
 
-double Event::checkSeat(string seat) {
+double Event::checkSeat(string seat, vector<string> seatsTaken) {
   double seatPrice = baseTicketPrice;
   if (!seat.empty()) {
     char letter = seat[0];
@@ -115,4 +113,11 @@ vector<Event*> EventController::getEventsByTeam(const string& team) {
     }
   }
   return eventsWithTeam;
+}
+
+Event* EventController::getEventWithID(const int &id) {
+  for (int i = 0; i < numEvents; ++i) {
+    if (events[i].id == id) return &events[i];
+  }
+  return nullptr;
 }
