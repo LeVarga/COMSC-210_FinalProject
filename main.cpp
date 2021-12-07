@@ -5,7 +5,6 @@
 #include "User.h"
 #include "Ticket.h"
 #include "Merch.h"
-#include "HashTable.h"
 
 using namespace std;
 
