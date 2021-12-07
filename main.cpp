@@ -20,10 +20,11 @@ void loginOrSignupPrompt();
 void signupPrompt();
 void addBalance();
 void seatSelectPrompt(Event*);
+void purchaseMerch();
 Event* eventPicker(vector<Event*>);
 Merch* merchPicker(vector<Merch*>);
 Merch* addMerch(Merch*);
-void purchaseMerch();
+
 
 int main() {
   // load data from files
@@ -52,7 +53,7 @@ int main() {
              << "      [3] to view events by sport\n"
              << "      [4] to view events by team\n"
              << "      [5] to go back...\n"
-             << "Choice -->";
+             << "Choice --> ";
         getline(cin, buf);
         if (buf == "1") {
           cout << "NOT IMPLEMENTED\n";
@@ -201,7 +202,7 @@ void purchaseMerch()
       getline(cin, buf);
       if (buf == "y" || buf == "Y")
         addBalance();
-      if (buf == "n" || buf == "N")
+      else if (buf == "n" || buf == "N")
       {
         check = false;
         break;
@@ -211,12 +212,27 @@ void purchaseMerch()
         purchaseMerch();
       }
     }
-    if (check)
+    while (check)
     {
-      string conf = merchController.merchConfCode();
-      cout << "Merch successfully purchased. Make sure to show the " <<
-        "confirmation code " << conf << " at the merch booth.\n";
-      return;
+      cout << "Would you like to have the merchandise shipped to your address? (Y/N) --> ";
+      getline(cin, buf);
+      if (buf == "y" || buf == "Y")
+      {
+        cout << "Please enter your shipping address: ";
+        getline(cin, buf);
+        cout << "Your merchandise will arrive at " << buf << " 5-10 business days from now. \nShipping code: " << merchController.merchConfCode()
+          << "\nMerch successfully purchased.\n\n";
+        return;
+      }
+      else if (buf == "n" || buf == "N")
+      {
+        string conf = merchController.merchConfCode();
+        cout << "Merch successfully purchased. Make sure to show the " <<
+          "confirmation code " << conf << " at the merch booth.\n\n";
+        return;
+      }
+      else
+        cout << "Invalid input. Try again.\n";
     }
   }
   else if (buf == "n" || buf == "N")
@@ -341,21 +357,21 @@ void addBalance()
 void signupPrompt() {
   string username, password, fn, ln;
   cout << "Username (4+ characters): ";
-  cin >> username;
+  getline(cin, username);
   while (!userController.checkUsername(username)) {
     cout << "Username is too short or already taken, try again: ";
-    cin >> username;
+    getline(cin, username);
   }
   cout << "Password (8+ characters): ";
-  cin >> password;
+  getline(cin, password);
   while (!userController.checkPassword(password)) {
     cout << "Password too short, try again: ";
-    cin >> password;
+    getline(cin, password);
   }
   cout << "First name: ";
-  cin >> fn;
+  getline(cin, fn);
   cout << "Last name: ";
-  cin >> ln;
+  getline(cin, ln);
   userController.addUser(username, password, fn, ln);
   userController.login(username, password);
 }
@@ -363,7 +379,7 @@ void signupPrompt() {
 void loginPrompt() {
   string username;
   cout << "Enter your username or X to go back: ";
-  cin >> username;
+  getline(cin, username);
   if (username == "X" || username == "x") loginOrSignupPrompt();
   else {
     cout << "Enter your password: ";
