@@ -10,6 +10,7 @@ using namespace std;
 #define EVENT_H
 
 struct Event {
+    int id;
     string sport;
     string date;
     string location;
@@ -22,23 +23,16 @@ private:
   vector<string> seatsTaken;
 };
 
-struct Ticket{
-    string confirmation;
-    string seat;
-    Event event;
-};
-
 class EventController {
     int numEvents = 0;
     DynamicArray<Event> events;
 public:
     void loadEvents(const string&);
     set<string> getLocations();
-    vector<Event> getEventsByLocation(const string&);
+    vector<Event*> getEventsByLocation(const string&);
     set<string> getSports();
-    vector<Event> getEventsBySport(const string&);
+    vector<Event*> getEventsBySport(const string&);
     set<string> getAllTeams();
-    vector<Event> getEventsByTeam(const string& team);
-    Ticket* createTicket(Event*, string);
+    vector<Event*> getEventsByTeam(const string& team);
 };
 #endif //EVENT_H

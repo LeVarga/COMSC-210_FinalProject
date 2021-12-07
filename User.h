@@ -21,7 +21,6 @@ public:
     string lastName;
     string savedCreditCard;
     double accountBalance;
-    vector<Ticket*> purchasedTickets;
 
     const bool checkPassword(const string&) const;
     void setPassword(const string&);
@@ -43,7 +42,8 @@ public:
     void saveToFile(string);
     void logout();
     string getCurrentUserFullName() const;
-    bool purchaseTicket(Ticket*, double);
+    string getCurrentUsername() const;
+    bool purchase(double);
     bool checkCard();
     void addCreditCard(string);
     void addBalance(double);

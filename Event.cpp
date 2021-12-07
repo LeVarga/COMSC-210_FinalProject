@@ -37,18 +37,19 @@ double Event::checkSeat(string seat) {
 
 Event Event::parse(const string &line) {
   istringstream istr(line);
-  string fields[5];
+  string fields[6];
   string tmp;
   int i = 0;
   while (getline(istr, tmp, ';')) {
     fields[i++] = tmp;
   }
   Event event;
-  event.sport = fields[0];
-  event.date = fields[1];
-  event.location = fields[2];
-  event.teams.first = fields[3];
-  event.teams.second = fields[4];
+  event.id = atoi(fields[0].c_str());
+  event.sport = fields[1];
+  event.date = fields[2];
+  event.location = fields[3];
+  event.teams.first = fields[4];
+  event.teams.second = fields[5];
   return event;
 }
 
@@ -69,11 +70,11 @@ set<string> EventController::getLocations() {
   return locations;
 }
 
-vector<Event> EventController::getEventsByLocation(const string& location) {
-  vector<Event> eventsAtLocation;
+vector<Event*> EventController::getEventsByLocation(const string& location) {
+  vector<Event*> eventsAtLocation;
   for (int i = 0; i < numEvents; ++i) {
     if (events[i].location == location) {
-      eventsAtLocation.push_back(events[i]);
+      eventsAtLocation.push_back(&events[i]);
     }
   }
   return eventsAtLocation;
@@ -87,11 +88,11 @@ set<string> EventController::getSports() {
   return sports;
 }
 
-vector<Event> EventController::getEventsBySport(const string& sport) {
-  vector<Event> eventsBySport;
+vector<Event*> EventController::getEventsBySport(const string& sport) {
+  vector<Event*> eventsBySport;
   for (int i = 0; i < numEvents; ++i) {
     if (events[i].sport == sport) {
-      eventsBySport.push_back(events[i]);
+      eventsBySport.push_back(&events[i]);
     }
   }
   return eventsBySport;
@@ -106,30 +107,12 @@ set<string> EventController::getAllTeams() {
   return teams;
 }
 
-vector<Event> EventController::getEventsByTeam(const string& team) {
-  vector<Event> eventsWithTeam;
+vector<Event*> EventController::getEventsByTeam(const string& team) {
+  vector<Event*> eventsWithTeam;
   for (int i = 0; i < numEvents; ++i) {
     if (events[i].teams.first == team || events[i].teams.first == team) {
-      eventsWithTeam.push_back(events[i]);
+      eventsWithTeam.push_back(&events[i]);
     }
   }
   return eventsWithTeam;
-}
-
-Ticket* EventController::createTicket(Event* event, string seat)
-{
-  srand(time(0));
-  rand();
-  Ticket* tempTicket = new Ticket;
-  const char alphanumBank[] = "1234567890" "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz";
-  string codeGen = "";
-  for (int i = 0; i < 16; i++)
-  {
-    codeGen += alphanumBank[rand() % (sizeof(alphanumBank) - 1)];
-  }
-  tempTicket->confirmation = codeGen;
-  tempTicket->seat = seat;
-  tempTicket->event = *event;
-
-  return tempTicket;
 }

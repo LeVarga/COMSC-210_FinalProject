@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "Event.h"
 #include "User.h"
+#include "Ticket.h"
 
 using namespace std;
 
@@ -10,18 +11,20 @@ string buf;
 
 UserController userController;
 EventController eventController;
+TicketController ticketController;
 
 void loginPrompt();
 void loginOrSignupPrompt();
 void signupPrompt();
 void addBalance();
 void seatSelectPrompt(Event*);
-Event* eventPicker(vector<Event> events);
+Event* eventPicker(vector<Event*> events);
 
 int main() {
   // load data from files
   userController.loadUsers("users.txt");
   eventController.loadEvents("events.txt");
+  ticketController.loadTickets("tickets.txt");
 
   // initial login prompt
   loginOrSignupPrompt();
@@ -95,6 +98,7 @@ int main() {
       loginPrompt();
     } else if (buf == "5") {
       userController.saveToFile("users.txt");
+      ticketController.saveToFile("tickets.txt");
       exit(0);
     } else {
       cout << "Invalid option, try again.\n";
@@ -112,9 +116,7 @@ void seatSelectPrompt(Event* event) {
     cout << buf << " is available and costs $" << cost << ". Would you like to reserve it? (Y/N) --> ";
     cin >> buf;
     if (buf == "y" || buf == "Y") {
-      Ticket* tick = eventController.createTicket(event, seat);
-      while(userController.purchaseTicket(tick, cost) == false)
-      {
+      while(!userController.purchase(cost)) {
         cout << "You seem to have an insufficient balance in your account. Would you like to add more? (Y/N) --> ";
         cin >> buf;
         if (buf == "y" || buf == "Y")
@@ -122,7 +124,9 @@ void seatSelectPrompt(Event* event) {
         else
           seatSelectPrompt(event);
       }
-      cout << "Ticket successfully purchased. Make sure to show the confirmation code at the door.\n";
+      string conf = ticketController.issueTicket(*event, userController.getCurrentUsername(), seat);
+      cout << "Ticket successfully purchased. Make sure to show the " <<
+      "confirmation code " << conf << " at the door.\n";
       return;
     }
     else {
@@ -135,18 +139,18 @@ void seatSelectPrompt(Event* event) {
   }
 }
 
-Event* eventPicker(vector<Event> events) {
+Event* eventPicker(vector<Event*> events) {
   for (int i = 0; i < events.size(); ++i) {
     // TODO: Format output better
-    cout << "[" << i + 1 << "] " << events[i].sport << ":\t"
-         << events[i].teams.first << " v. " << events[i].teams.second << "\t"
-         << events[i].location << "\t" << events[i].date << "\n";
+    cout << "[" << i + 1 << "] " << events[i]->sport << ":\t"
+         << events[i]->teams.first << " v. " << events[i]->teams.second << "\t"
+         << events[i]->location << "\t" << events[i]->date << "\n";
   }
   cout << "Enter the number of an event to buy a ticket, or X to go back: ";
   cin >> buf;
   if (buf == "x" || buf == "X") return nullptr;
   if (atoi(buf.c_str()) <= events.size() && atoi(buf.c_str()) > 0) {
-    return &events[atoi(buf.c_str()) - 1];
+    return events[atoi(buf.c_str()) - 1];
   } else {
     cout << "Invalid choice, try again.\n";
     return eventPicker(events);
@@ -240,6 +244,7 @@ void loginOrSignupPrompt() {
     signupPrompt();
   } else if (buf == "3") {
     userController.saveToFile("users.txt");
+    ticketController.saveToFile("tickets.txt");
     exit(0);
   } else {
     cout << "Invalid option, try again.\n";

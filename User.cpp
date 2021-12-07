@@ -34,7 +34,7 @@ string User::to_str() {
          + to_string(password) + ";"
          + firstName + ";"
          + lastName + ";"
-         + savedCreditCard + ";"; // TODO: add ticket data
+         + savedCreditCard + ";";
 }
 
 int UserController::hashCode(const string& key) {
@@ -56,6 +56,7 @@ bool UserController::checkUsername(string username) {
 }
 
 bool UserController::checkPassword(string pass) {
+  // TODO: More password checks
   return !(pass.size() < 8);
 }
 
@@ -101,10 +102,13 @@ string UserController::getCurrentUserFullName() const {
   return currentUser->firstName + " " + currentUser->lastName;
 }
 
-bool UserController::purchaseTicket(Ticket* ticket, double price) {
+string UserController::getCurrentUsername() const {
+  return currentUser->username;
+}
+
+bool UserController::purchase(double price) {
   if (currentUser->accountBalance < price)
     return false;
-  currentUser->purchasedTickets.push_back(ticket);
   currentUser->accountBalance -= price;
   return true;
 }
