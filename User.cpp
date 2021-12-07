@@ -13,7 +13,7 @@ void User::setPassword(const string &password) {
 
 User User::parse(const string &line) {
   istringstream istr(line);
-  string fields[5];
+  string fields[6];
   string tmp;
   int i = 0;
   while (getline(istr, tmp, ';')) {
@@ -25,7 +25,7 @@ User User::parse(const string &line) {
   user.firstName = fields[2];
   user.lastName = fields[3];
   user.savedCreditCard = fields[4];
-  // TODO: add ticket data
+  user.accountBalance = atof(fields[5].c_str());
   return user;
 }
 
@@ -34,7 +34,8 @@ string User::to_str() {
          + to_string(password) + ";"
          + firstName + ";"
          + lastName + ";"
-         + savedCreditCard + ";";
+         + savedCreditCard + ";"
+         + to_string(accountBalance) + ";";
 }
 
 int UserController::hashCode(const string& key) {
