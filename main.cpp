@@ -153,7 +153,7 @@ int main() {
       }
     } else if (buf == "4") {
       userController.logout();
-      loginPrompt();
+      loginOrSignupPrompt();
     } else if (buf == "5") {
       userController.saveToFile("users.txt");
       ticketController.saveToFile("tickets.txt");
