@@ -1,6 +1,7 @@
 #include <sstream>
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #include "Event.h"
 #include "User.h"
 #include "Ticket.h"
@@ -27,7 +28,7 @@ void buildMonths(string*);
 void vendorPicker(string);
 void concessionItemPicker(Vendor);
 void purchaseConcession(Item);
-Event* eventPicker(vector<Event*>);
+Event* eventPicker(vector<Event*>, string);
 Merch* merchPicker(vector<Merch*>);
 Merch* addMerch(Merch*);
 
@@ -74,7 +75,7 @@ int main() {
           cout << "Your choice --> ";
           getline(cin, buf);
           cout << "Events in " << buf << ":\n";
-          Event* ev = eventPicker(eventController.getEventsByDate(buf));
+          Event* ev = eventPicker(eventController.getEventsByDate(buf), "");
           if (ev)
             seatSelectPrompt(ev);
         } else if (buf == "2") {
@@ -85,7 +86,7 @@ int main() {
           cout << "Your choice --> ";
           getline(cin, buf);
           cout << "Events in " << buf << ":\n";
-          Event* ev = eventPicker(eventController.getEventsByLocation(buf));
+          Event* ev = eventPicker(eventController.getEventsByLocation(buf), "location");
           if (ev)
             seatSelectPrompt(ev);
         } else if (buf == "3") {
@@ -96,7 +97,7 @@ int main() {
           cout << "Your choice --> ";
           getline(cin, buf);
           cout << buf << " games:\n";
-          Event* ev = eventPicker(eventController.getEventsBySport(buf));
+          Event* ev = eventPicker(eventController.getEventsBySport(buf), "sport");
           if(ev)
             seatSelectPrompt(ev);
         } else if (buf == "4") {
@@ -107,7 +108,7 @@ int main() {
           cout << "Enter the team you're looking for --> ";
           getline(cin, buf);
           cout << "Games with " << buf << ":\n";
-          Event* ev = eventPicker(eventController.getEventsByTeam(buf));
+          Event* ev = eventPicker(eventController.getEventsByTeam(buf), "");
           if (ev)
             seatSelectPrompt(ev);
         } else if (buf == "5") {
@@ -356,12 +357,17 @@ Merch* addMerch(Merch* merch) {
   }
 }
 
-Event* eventPicker(vector<Event*> events) {
+Event* eventPicker(vector<Event*> events, string excludedField) {
   for (int i = 0; i < (int)events.size(); ++i) {
-    // TODO: Format output better
-    cout << "[" << i + 1 << "] " << events[i]->sport << ":\t"
-         << events[i]->teams.first << " v. " << events[i]->teams.second << "\t"
-         << events[i]->location << "\t" << events[i]->date << "\n";
+    cout << left << setw(5) << "[" + to_string(i + 1) + "] ";
+    if (excludedField != "sport"){
+      cout << left << setw(20) << events[i]->sport;
+    }
+    cout << right << setw(25) << events[i]->teams.first << " vs. " << setw(25) << left << events[i]->teams.second;
+    if (excludedField != "location") {
+      cout << left << setw(15) << events[i]->location;
+    }
+    cout << left << setw(10) << events[i]->date << "\n";
   }
   cout << "Enter the number of an event to buy a ticket, or X to go back: ";
   getline(cin, buf);
@@ -370,7 +376,7 @@ Event* eventPicker(vector<Event*> events) {
     return events[atoi(buf.c_str()) - 1];
   } else {
     cout << "Invalid choice, try again.\n";
-    return eventPicker(events);
+    return eventPicker(events, excludedField);
   }
 }
 
