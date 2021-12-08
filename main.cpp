@@ -1,6 +1,7 @@
 #include <sstream>
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #include "Event.h"
 #include "User.h"
 #include "Ticket.h"
@@ -22,12 +23,12 @@ void loginOrSignupPrompt();
 void signupPrompt();
 void addBalance();
 void seatSelectPrompt(Event*);
-void purchaseMerch();
+bool purchaseMerch();
 void buildMonths(string*);
 void vendorPicker(string);
 void concessionItemPicker(Vendor);
 void purchaseConcession(Item);
-Event* eventPicker(vector<Event*>);
+Event* eventPicker(vector<Event*>, string);
 Merch* merchPicker(vector<Merch*>);
 Merch* addMerch(Merch*);
 
@@ -68,14 +69,15 @@ int main() {
         getline(cin, buf);
         if (buf == "1") {
           cout << "Months available: \n";
-          for (const auto& dates : eventController.getDates()) {
-            cout << months[atoi(dates.c_str()) + 1] << "\n";
+          for (const auto &dates : eventController.getDates()) {
+            cout << months[dates - 1] << "\n";
           }
           cout << "Your choice --> ";
           getline(cin, buf);
           cout << "Events in " << buf << ":\n";
-          Event* ev = eventPicker(eventController.getEventsByDate(buf));
-          seatSelectPrompt(ev);
+          Event* ev = eventPicker(eventController.getEventsByDate(buf), "");
+          if (ev)
+            seatSelectPrompt(ev);
         } else if (buf == "2") {
           cout << "Locations available: \n";
           for (const auto &location : eventController.getLocations()) {
@@ -84,8 +86,9 @@ int main() {
           cout << "Your choice --> ";
           getline(cin, buf);
           cout << "Events in " << buf << ":\n";
-          Event* ev = eventPicker(eventController.getEventsByLocation(buf));
-          seatSelectPrompt(ev);
+          Event* ev = eventPicker(eventController.getEventsByLocation(buf), "location");
+          if (ev)
+            seatSelectPrompt(ev);
         } else if (buf == "3") {
           cout << "Sports available:\n";
           for (const auto &sport : eventController.getSports()) {
@@ -94,8 +97,9 @@ int main() {
           cout << "Your choice --> ";
           getline(cin, buf);
           cout << buf << " games:\n";
-          Event* ev = eventPicker(eventController.getEventsBySport(buf));
-          seatSelectPrompt(ev);
+          Event* ev = eventPicker(eventController.getEventsBySport(buf), "sport");
+          if(ev)
+            seatSelectPrompt(ev);
         } else if (buf == "4") {
           cout << "Teams found:\n";
           for (const auto &team : eventController.getAllTeams()) {
@@ -104,8 +108,9 @@ int main() {
           cout << "Enter the team you're looking for --> ";
           getline(cin, buf);
           cout << "Games with " << buf << ":\n";
-          Event* ev = eventPicker(eventController.getEventsByTeam(buf));
-          seatSelectPrompt(ev);
+          Event* ev = eventPicker(eventController.getEventsByTeam(buf), "");
+          if (ev)
+            seatSelectPrompt(ev);
         } else if (buf == "5") {
           break;
         } else {
@@ -124,17 +129,24 @@ int main() {
             for (const auto& team : eventController.getAllTeams()) {
               cout << team << "\n";
             }
-            cout << "Enter the team you're looking for, or press X to check out/cancel --> ";
+            cout << "Enter the team you're looking for, or enter C to check out, or enter X to cancel --> ";
             getline(cin, buf);
             if (buf == "x" || buf == "X") break;
+            else if (!userController.cartIsEmpty() && (buf == "c" || buf == "C")) {
+              if (!purchaseMerch())
+                continue;
+              else
+                break;
+            }
+            else if (userController.cartIsEmpty() && (buf == "c" || buf == "C")) {
+              cout << "Cannot check out with an empty cart. Try again.\n";
+              continue;
+            }
             cout << "Merchandise for " << buf << ":\n";
             Merch* mrc = merchPicker(merchController.getMerchByTeam(buf));
             userController.addToCart(addMerch(mrc));
           }
-          if (!userController.cartIsEmpty()) {
-            purchaseMerch();
-            userController.clearCart();
-          }
+          userController.clearCart();
         }
         else if(buf == "2")
           break;
@@ -236,9 +248,9 @@ void purchaseConcession(Item item) {
 
 void concessionItemPicker(Vendor vendor) {
   cout << "Items available at " << vendor.name << ":\n";
-  for (int i = 0; i < vendor.items.size(); ++i) {
+  for (int i = 0; i < (int)vendor.items.size(); ++i) {
     cout << "[" << i + 1 << "] " << vendor.items[i].name
-         << " – $" << vendor.items[i].cost << "\n";
+         << " - $" << vendor.items[i].cost << "\n";
   }
   cout << "Choose an item to purchase or enter X to go back --> ";
   getline(cin, buf);
@@ -254,7 +266,7 @@ void concessionItemPicker(Vendor vendor) {
 void vendorPicker(string location) {
   cout << "Vendor's available at " << location << ":\n";
   auto vendors = concessionsController.getVendors();
-  for (int i = 0; i < vendors.size(); ++i) {
+  for (int i = 0; i < (int)vendors.size(); ++i) {
     cout << "[" << i + 1 << "] " << vendors[i].name << "\t(Location: "
          << vendors[i].location << ")\n";
   }
@@ -270,7 +282,7 @@ void vendorPicker(string location) {
   }
 }
 
-void purchaseMerch() {
+bool purchaseMerch() {
   double total = 0;
   for (Queue<Merch*> cart = userController.currentCart(); !cart.empty(); cart.pop()) {
     cout << cart.front()->team << " " << cart.front()->type << ": $" << cart.front()->cost << "\n";
@@ -302,25 +314,25 @@ void purchaseMerch() {
         getline(cin, buf);
         cout << "Your merchandise will arrive at " << buf << " 5-10 business days from now. \nShipping code: " << merchController.merchConfCode()
           << "\nMerch successfully purchased.\n\n";
-        return;
+        return true;
       }
       else if (buf == "n" || buf == "N") {
         string conf = merchController.merchConfCode();
         cout << "Merch successfully purchased. Make sure to show the " <<
           "confirmation code " << conf << " at the merch booth.\n\n";
-        return;
+        return true;
       }
       else
         cout << "Invalid input. Try again.\n";
     }
   }
   else if (buf == "n" || buf == "N")
-    return;
+    return false;
   else {
     cout << "Invalid input. Try again.\n";
     purchaseMerch();
   }
-
+  return false;
 }
 
 Merch* addMerch(Merch* merch) {
@@ -345,12 +357,17 @@ Merch* addMerch(Merch* merch) {
   }
 }
 
-Event* eventPicker(vector<Event*> events) {
+Event* eventPicker(vector<Event*> events, string excludedField) {
   for (int i = 0; i < (int)events.size(); ++i) {
-    // TODO: Format output better
-    cout << "[" << i + 1 << "] " << events[i]->sport << ":\t"
-         << events[i]->teams.first << " v. " << events[i]->teams.second << "\t"
-         << events[i]->location << "\t" << events[i]->date << "\n";
+    cout << left << setw(5) << "[" + to_string(i + 1) + "] ";
+    if (excludedField != "sport"){
+      cout << left << setw(20) << events[i]->sport;
+    }
+    cout << right << setw(25) << events[i]->teams.first << " vs. " << setw(25) << left << events[i]->teams.second;
+    if (excludedField != "location") {
+      cout << left << setw(15) << events[i]->location;
+    }
+    cout << left << setw(10) << events[i]->date << "\n";
   }
   cout << "Enter the number of an event to buy a ticket, or X to go back: ";
   getline(cin, buf);
@@ -359,7 +376,7 @@ Event* eventPicker(vector<Event*> events) {
     return events[atoi(buf.c_str()) - 1];
   } else {
     cout << "Invalid choice, try again.\n";
-    return eventPicker(events);
+    return eventPicker(events, excludedField);
   }
 }
 
@@ -415,8 +432,8 @@ void addBalance() {
   }
   cout << "How much would you like to add to your balance? Enter: ";
   getline(cin, buf);
-  userController.addBalance(atoi(buf.c_str()));
-  cout << "$" << atoi(buf.c_str()) << " successfully added to your account.\nCurrent total: $" << userController.getBalance() << "\n\n";
+  userController.addBalance(atof(buf.c_str()));
+  cout << "$" << atof(buf.c_str()) << " successfully added to your account.\nCurrent total: $" << userController.getBalance() << "\n\n";
 }
 
 void signupPrompt() {
