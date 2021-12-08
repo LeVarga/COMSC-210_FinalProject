@@ -118,10 +118,8 @@ int main() {
              << "      [2] to go back...\n"
              << "Choice --> ";
         getline(cin, buf);
-        if (buf == "1")
-        {
-          while (true)
-          {
+        if (buf == "1") {
+          while (true) {
             cout << "\nTeams found:\n";
             for (const auto& team : eventController.getAllTeams()) {
               cout << team << "\n";
@@ -133,16 +131,14 @@ int main() {
             Merch* mrc = merchPicker(merchController.getMerchByTeam(buf));
             userController.addToCart(addMerch(mrc));
           }
-          if (!userController.cartIsEmpty())
-          {
+          if (!userController.cartIsEmpty()) {
             purchaseMerch();
             userController.clearCart();
           }
         }
         else if(buf == "2")
           break;
-        else
-        {
+        else {
           cout << "Invalid option, try again.\n";
         }
       }
@@ -217,14 +213,12 @@ void purchaseConcession(Item item) {
   cout << "That'll be $" << item.cost << ". Would you like to continue? (Y/N) --> ";
   getline(cin, buf);
   if (buf == "Y" || buf == "y") {
-    while (!userController.purchase(item.cost))
-    {
+    while (!userController.purchase(item.cost)) {
       cout << "You seem to have an insufficient balance in your account. Would you like to add more? (Y/N) --> ";
       getline(cin, buf);
       if (buf == "y" || buf == "Y")
         addBalance();
-      else if (buf == "n" || buf == "N")
-      {
+      else if (buf == "n" || buf == "N") {
         return;
       }
       else {
@@ -276,27 +270,22 @@ void vendorPicker(string location) {
   }
 }
 
-void purchaseMerch() 
-{
+void purchaseMerch() {
   double total = 0;
-  for (Queue<Merch*> cart = userController.currentCart(); !cart.empty(); cart.pop())
-  {
+  for (Queue<Merch*> cart = userController.currentCart(); !cart.empty(); cart.pop()) {
     cout << cart.front()->team << " " << cart.front()->type << ": $" << cart.front()->cost << "\n";
     total += cart.front()->cost;
   }
   cout << "Total cost: $" << total << ". Confirm checkout? (Y/N) --> ";
   getline(cin, buf);
-  if (buf == "y" || buf == "Y")
-  {
+  if (buf == "y" || buf == "Y") {
     bool check = true;
-    while (!userController.purchase(total))
-    {
+    while (!userController.purchase(total)) {
       cout << "You seem to have an insufficient balance in your account. Would you like to add more? (Y/N) --> ";
       getline(cin, buf);
       if (buf == "y" || buf == "Y")
         addBalance();
-      else if (buf == "n" || buf == "N")
-      {
+      else if (buf == "n" || buf == "N") {
         check = false;
         break;
       }
@@ -305,20 +294,17 @@ void purchaseMerch()
         purchaseMerch();
       }
     }
-    while (check)
-    {
+    while (check) {
       cout << "Would you like to have the merchandise shipped to your address? (Y/N) --> ";
       getline(cin, buf);
-      if (buf == "y" || buf == "Y")
-      {
+      if (buf == "y" || buf == "Y") {
         cout << "Please enter your shipping address: ";
         getline(cin, buf);
         cout << "Your merchandise will arrive at " << buf << " 5-10 business days from now. \nShipping code: " << merchController.merchConfCode()
           << "\nMerch successfully purchased.\n\n";
         return;
       }
-      else if (buf == "n" || buf == "N")
-      {
+      else if (buf == "n" || buf == "N") {
         string conf = merchController.merchConfCode();
         cout << "Merch successfully purchased. Make sure to show the " <<
           "confirmation code " << conf << " at the merch booth.\n\n";
@@ -330,35 +316,30 @@ void purchaseMerch()
   }
   else if (buf == "n" || buf == "N")
     return;
-  else
-  {
+  else {
     cout << "Invalid input. Try again.\n";
     purchaseMerch();
   }
 
 }
 
-Merch* addMerch(Merch* merch)
-{
+Merch* addMerch(Merch* merch) {
   if (merch == nullptr) {
     return nullptr;
   }
   cout << "Please confirm: you are about to add a " << merch->type << " from " << merch->team << " for " << merch->cost << " to your cart\n";
   cout << "Confirm? (Y/N) --> ";
   getline(cin, buf);
-  if (buf == "y" || buf == "Y")
-  {    
+  if (buf == "y" || buf == "Y") {
     cout << "Successfully added to cart.\n";
     return merch;
   }
-  else if (buf == "n" || buf == "N")
-  {
+  else if (buf == "n" || buf == "N") {
     
     cout << "Purchase cancelled.\n";
     return nullptr;
   }
-  else
-  {
+  else {
     cout << "Invalid input. Try again.\n";
     addMerch(merch);
   }
@@ -382,18 +363,15 @@ Event* eventPicker(vector<Event*> events) {
   }
 }
 
-Merch* merchPicker(vector<Merch*> merch)
-{
-  if ((int)merch.size() > 0)
-  {
+Merch* merchPicker(vector<Merch*> merch) {
+  if ((int)merch.size() > 0) {
     for (int i = 0; i < (int)merch.size(); i++) {
       cout << "[" << i + 1 << "] " << merch[i]->type << ": $"
         << merch[i]->cost << "\n";
     }
     cout << "Enter the number of the merch you'd like to buy, or X to go back: ";
     getline(cin, buf);
-    if (buf == "x" || buf == "X")
-    {    
+    if (buf == "x" || buf == "X") {
       return nullptr;
     }
     if (atoi(buf.c_str()) <= (int)merch.size() && atoi(buf.c_str()) > 0) {
@@ -404,28 +382,23 @@ Merch* merchPicker(vector<Merch*> merch)
       return merchPicker(merch);
     }
   }
-  else
-  {
+  else {
     cout << "This team has no available merchandise.\n";
     return nullptr;
   }
 }
 
-void addBalance()
-{
+void addBalance() {
   cout << "Do you have a card registered? (Y/N) --> ";
   getline(cin, buf);
-  if (buf == "n" || buf == "N")
-  {
+  if (buf == "n" || buf == "N") {
     cout << "Would you like to register one? (Y/N) --> ";
     getline(cin, buf);
-    if (buf == "y" || buf == "Y")
-    {
+    if (buf == "y" || buf == "Y") {
       cout << "Please enter the 16-digit number of your card: ";
       getline(cin, buf);
       userController.addCreditCard(buf);
-      while (!userController.checkCard())
-      {
+      while (!userController.checkCard()) {
         cout << "Card number not 16-digits, try again: ";
         getline(cin, buf);
         userController.addCreditCard(buf);
@@ -436,8 +409,7 @@ void addBalance()
     else if (buf == "n" || buf == "N")
       return; 
   }
-  if (!userController.checkCard())
-  {
+  if (!userController.checkCard()) {
     cout << "No valid credit card on file, try again.\n";
     addBalance();
   }
@@ -506,8 +478,7 @@ void loginOrSignupPrompt() {
   }
 }
 
-void buildMonths(string* months)
-{
+void buildMonths(string* months) {
   months[0] = "January";
   months[1] = "February";
   months[2] = "March";

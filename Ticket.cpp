@@ -45,8 +45,7 @@ string TicketController::issueTicket(Event& event, string username, string seat)
   Ticket tempTicket = Ticket();
   const char alphanumBank[] = "1234567890" "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz";
   string codeGen = "";
-  for (int i = 0; i < 16; i++)
-  {
+  for (int i = 0; i < 16; i++) {
     codeGen += alphanumBank[rand() % (sizeof(alphanumBank) - 1)];
   }
   tempTicket.confirmation = codeGen;

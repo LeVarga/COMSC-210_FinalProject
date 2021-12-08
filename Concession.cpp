@@ -20,8 +20,7 @@ Item Item::parse(const string& line) {
   return item;
 }
 
-Vendor Vendor::parse(const string& line)
-{
+Vendor Vendor::parse(const string& line) {
   istringstream istr(line);
   vector<string> fields;
   string tmp;
@@ -37,29 +36,24 @@ Vendor Vendor::parse(const string& line)
   return vendor;
 }
 
-void ConcessionsController::loadConcessions(const string& filename)
-{
+void ConcessionsController::loadConcessions(const string& filename) {
   ifstream File(filename);
   string buf;
-  while (getline(File, buf))
-  {
+  while (getline(File, buf)) {
     vendors.push_back(Vendor::parse(buf));
   }
 }
 
-vector<Vendor> ConcessionsController::getVendors() const
-{
+vector<Vendor> ConcessionsController::getVendors() const {
   return vendors;
 }
 
-string ConcessionsController::concessionConfCode()
-{
+string ConcessionsController::concessionConfCode() {
   srand(time(0));
   rand();
   const char alphanumBank[] = "1234567890" "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "abcdefghijklmnopqrstuvwxyz";
   string codeGen = "";
-  for (int i = 0; i < 10; i++)
-  {
+  for (int i = 0; i < 10; i++) {
     codeGen += alphanumBank[rand() % (sizeof(alphanumBank) - 1)];
   }
   return codeGen;

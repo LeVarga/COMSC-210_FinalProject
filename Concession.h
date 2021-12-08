@@ -20,8 +20,7 @@ struct Vendor {
     static Vendor parse(const string&);
 };
 
-class ConcessionsController
-{
+class ConcessionsController {
     vector<Vendor> vendors;
 public:
     void loadConcessions(const string&);

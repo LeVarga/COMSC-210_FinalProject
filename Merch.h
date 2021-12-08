@@ -7,16 +7,14 @@
 #include "DynamicArray.h"
 using namespace std;
 
-struct Merch
-{
+struct Merch {
 	string team;
 	string type;
 	double cost;
 	static Merch parse(const string&);
 };
 
-class MerchController
-{
+class MerchController {
 	int numMerch = 0;
 	DynamicArray<Merch> merchandise;
 public:
