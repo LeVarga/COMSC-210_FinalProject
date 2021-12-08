@@ -61,11 +61,11 @@ void EventController::loadEvents(const string &filename) {
   }
 }
 
-set<string> EventController::getDates() {
-  set<string> dates;
+set<int> EventController::getDates() {
+  set<int> dates;
   for (int i = 0; i < numEvents; i++) {
     string month(events[i].date, 0, 2);
-    dates.insert(month);
+    dates.insert(atoi(month.c_str()));
   }
   return dates;
 }

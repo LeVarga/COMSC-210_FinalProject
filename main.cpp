@@ -70,7 +70,7 @@ int main() {
         if (buf == "1") {
           cout << "Months available: \n";
           for (const auto &dates : eventController.getDates()) {
-            cout << months[atoi(dates.c_str()) - 1] << "\n";
+            cout << months[dates - 1] << "\n";
           }
           cout << "Your choice --> ";
           getline(cin, buf);
