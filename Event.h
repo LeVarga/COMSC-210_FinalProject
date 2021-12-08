@@ -25,7 +25,7 @@ class EventController {
     DynamicArray<Event> events;
 public:
     void loadEvents(const string&);
-    set<string> getDates();
+    set<int> getDates();
     vector<Event*> getEventsByDate(const string&);
     set<string> getLocations();
     vector<Event*> getEventsByLocation(const string&);
