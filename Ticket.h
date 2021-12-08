@@ -20,6 +20,7 @@ public:
     void loadTickets(const string&, EventController&);
     vector<string> getSeatsTaken(const Event*);
     vector<Ticket*> getTicketsByUsername(const string&);
+    Ticket* getTicketWithConfirmation(const string&);
     string issueTicket(Event&, const string, const string);
     void saveToFile(const string&);
 };

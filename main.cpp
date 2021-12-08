@@ -5,6 +5,7 @@
 #include "User.h"
 #include "Ticket.h"
 #include "Merch.h"
+#include "Concession.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ UserController userController;
 EventController eventController;
 TicketController ticketController;
 MerchController merchController;
+ConcessionsController concessionsController;
 
 void loginPrompt();
 void loginOrSignupPrompt();
@@ -22,6 +24,9 @@ void addBalance();
 void seatSelectPrompt(Event*);
 void purchaseMerch();
 void buildMonths(string*);
+void vendorPicker(string);
+void concessionItemPicker(Vendor);
+void purchaseConcession(Item);
 Event* eventPicker(vector<Event*>);
 Merch* merchPicker(vector<Merch*>);
 Merch* addMerch(Merch*);
@@ -33,6 +38,7 @@ int main() {
   eventController.loadEvents("events.txt");
   ticketController.loadTickets("tickets.txt", eventController);
   merchController.loadMerch("merch.txt");
+  concessionsController.loadConcessions("concessions.txt");
 
   // initial login prompt
   loginOrSignupPrompt();
@@ -44,9 +50,9 @@ int main() {
   // main menu
   while (true) {
     cout << "Logged in as " << userController.getCurrentUserFullName() << "\n"
-         << "Enter [1] to find events\n"
+         << "Enter [1] to find events and purchase tickets\n"
          << "      [2] to purchase merchandise\n"
-         << "      [3] to view your reservations\n"
+         << "      [3] to view your reservations and buy concessions\n"
          << "      [4] to log out\n"
          << "      [5] to quit\n"
          << "Choice --> ";
@@ -150,6 +156,17 @@ int main() {
              << "\tSeat " << tick->seat << "\tConfirmation: "
              << tick->confirmation << "\n";
       }
+      cout << "Enter a ticket confirmation number to see vendors and buy concessions, or X to go back --> ";
+      getline(cin, buf);
+      if (buf != "X" || buf != "x") {
+        auto ticketSelected = ticketController.getTicketWithConfirmation(buf);
+        while (!ticketSelected) {
+          cout << "Could not find a ticket with that confirmation, try again --> ";
+          getline(cin, buf);
+          ticketSelected = ticketController.getTicketWithConfirmation(buf);
+        }
+        vendorPicker(ticketSelected->event->location);
+      }
     } else if (buf == "4") {
       userController.logout();
       loginOrSignupPrompt();
@@ -193,6 +210,69 @@ void seatSelectPrompt(Event* event) {
   else {
     cout << buf << " is unavailable. Try a different one.\n";
     seatSelectPrompt(event);
+  }
+}
+
+void purchaseConcession(Item item) {
+  cout << "That'll be $" << item.cost << ". Would you like to continue? (Y/N) --> ";
+  getline(cin, buf);
+  if (buf == "Y" || buf == "y") {
+    while (!userController.purchase(item.cost))
+    {
+      cout << "You seem to have an insufficient balance in your account. Would you like to add more? (Y/N) --> ";
+      getline(cin, buf);
+      if (buf == "y" || buf == "Y")
+        addBalance();
+      else if (buf == "n" || buf == "N")
+      {
+        return;
+      }
+      else {
+        cout << "Invalid input. Try again.\n";
+        continue;
+      }
+    }
+    cout << "Successfully purchased " << item.name << ". Your confirmation code is "
+         << concessionsController.concessionConfCode() << "\n";
+  } else if (buf != "n" && buf != "N") {
+    cout << "Invalid input, try again.\n";
+    purchaseConcession(item);
+  }
+}
+
+void concessionItemPicker(Vendor vendor) {
+  cout << "Items available at " << vendor.name << ":\n";
+  for (int i = 0; i < vendor.items.size(); ++i) {
+    cout << "[" << i + 1 << "] " << vendor.items[i].name
+         << " – $" << vendor.items[i].cost << "\n";
+  }
+  cout << "Choose an item to purchase or enter X to go back --> ";
+  getline(cin, buf);
+  if (buf == "x" || buf == "X") return;
+  else if (atoi(buf.c_str()) <= (int)vendor.items.size() && atoi(buf.c_str()) > 0) {
+    purchaseConcession(vendor.items[atoi(buf.c_str()) - 1]);
+  } else {
+    cout << "Invalid choice, try again.\n";
+    concessionItemPicker(vendor);
+  }
+}
+
+void vendorPicker(string location) {
+  cout << "Vendor's available at " << location << ":\n";
+  auto vendors = concessionsController.getVendors();
+  for (int i = 0; i < vendors.size(); ++i) {
+    cout << "[" << i + 1 << "] " << vendors[i].name << "\t(Location: "
+         << vendors[i].location << ")\n";
+  }
+
+  cout << "Choose a vendor to purchase items or enter X to go back --> ";
+  getline(cin, buf);
+  if (buf == "x" || buf == "X") return;
+  else if (atoi(buf.c_str()) <= (int)vendors.size() && atoi(buf.c_str()) > 0) {
+    concessionItemPicker(vendors[atoi(buf.c_str()) - 1]);
+  } else {
+    cout << "Invalid choice, try again.\n";
+    vendorPicker(location);
   }
 }
 

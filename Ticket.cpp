@@ -66,6 +66,13 @@ vector<string> TicketController::getSeatsTaken(const Event* event) {
   return tmp;
 }
 
+Ticket* TicketController::getTicketWithConfirmation(const string& confirmation) {
+  for (int i = 0; i < numTickets; ++i) {
+    if (tickets[i].confirmation == confirmation) return &tickets[i];
+  }
+  return nullptr;
+}
+
 vector<Ticket*> TicketController::getTicketsByUsername(const string& username) {
   vector<Ticket*> tmp;
   for (int i = 0; i < numTickets; ++i) {

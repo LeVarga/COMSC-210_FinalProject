@@ -1,0 +1,2 @@
+Antonio's Pizza;Northwest;Pepperoni 10$12;Pepperoni 12$14;Pepperoni Slice$5;Cheese 10$10;Cheese 12$12;Cheese Slice$4
+Johnny's Burger;South;Quarter Pound Hamburger$8;Cheeseburger$10;Large Fries$5;Small Fries$2;Coke$2
