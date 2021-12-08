@@ -432,8 +432,8 @@ void addBalance() {
   }
   cout << "How much would you like to add to your balance? Enter: ";
   getline(cin, buf);
-  userController.addBalance(atoi(buf.c_str()));
-  cout << "$" << atoi(buf.c_str()) << " successfully added to your account.\nCurrent total: $" << userController.getBalance() << "\n\n";
+  userController.addBalance(atof(buf.c_str()));
+  cout << "$" << atof(buf.c_str()) << " successfully added to your account.\nCurrent total: $" << userController.getBalance() << "\n\n";
 }
 
 void signupPrompt() {
