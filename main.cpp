@@ -250,7 +250,7 @@ void concessionItemPicker(Vendor vendor) {
   cout << "Items available at " << vendor.name << ":\n";
   for (int i = 0; i < (int)vendor.items.size(); ++i) {
     cout << "[" << i + 1 << "] " << vendor.items[i].name
-         << " – $" << vendor.items[i].cost << "\n";
+         << " - $" << vendor.items[i].cost << "\n";
   }
   cout << "Choose an item to purchase or enter X to go back --> ";
   getline(cin, buf);
