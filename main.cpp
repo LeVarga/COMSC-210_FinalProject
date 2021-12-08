@@ -22,7 +22,7 @@ void loginOrSignupPrompt();
 void signupPrompt();
 void addBalance();
 void seatSelectPrompt(Event*);
-void purchaseMerch();
+bool purchaseMerch();
 void buildMonths(string*);
 void vendorPicker(string);
 void concessionItemPicker(Vendor);
@@ -68,14 +68,15 @@ int main() {
         getline(cin, buf);
         if (buf == "1") {
           cout << "Months available: \n";
-          for (const auto& dates : eventController.getDates()) {
-            cout << months[atoi(dates.c_str()) + 1] << "\n";
+          for (const auto &dates : eventController.getDates()) {
+            cout << months[atoi(dates.c_str()) - 1] << "\n";
           }
           cout << "Your choice --> ";
           getline(cin, buf);
           cout << "Events in " << buf << ":\n";
           Event* ev = eventPicker(eventController.getEventsByDate(buf));
-          seatSelectPrompt(ev);
+          if (ev)
+            seatSelectPrompt(ev);
         } else if (buf == "2") {
           cout << "Locations available: \n";
           for (const auto &location : eventController.getLocations()) {
@@ -85,7 +86,8 @@ int main() {
           getline(cin, buf);
           cout << "Events in " << buf << ":\n";
           Event* ev = eventPicker(eventController.getEventsByLocation(buf));
-          seatSelectPrompt(ev);
+          if (ev)
+            seatSelectPrompt(ev);
         } else if (buf == "3") {
           cout << "Sports available:\n";
           for (const auto &sport : eventController.getSports()) {
@@ -95,7 +97,8 @@ int main() {
           getline(cin, buf);
           cout << buf << " games:\n";
           Event* ev = eventPicker(eventController.getEventsBySport(buf));
-          seatSelectPrompt(ev);
+          if(ev)
+            seatSelectPrompt(ev);
         } else if (buf == "4") {
           cout << "Teams found:\n";
           for (const auto &team : eventController.getAllTeams()) {
@@ -105,7 +108,8 @@ int main() {
           getline(cin, buf);
           cout << "Games with " << buf << ":\n";
           Event* ev = eventPicker(eventController.getEventsByTeam(buf));
-          seatSelectPrompt(ev);
+          if (ev)
+            seatSelectPrompt(ev);
         } else if (buf == "5") {
           break;
         } else {
@@ -124,17 +128,24 @@ int main() {
             for (const auto& team : eventController.getAllTeams()) {
               cout << team << "\n";
             }
-            cout << "Enter the team you're looking for, or press X to check out/cancel --> ";
+            cout << "Enter the team you're looking for, or enter C to check out, or enter X to cancel --> ";
             getline(cin, buf);
             if (buf == "x" || buf == "X") break;
+            else if (!userController.cartIsEmpty() && (buf == "c" || buf == "C")) {
+              if (!purchaseMerch())
+                continue;
+              else
+                break;
+            }
+            else if (userController.cartIsEmpty() && (buf == "c" || buf == "C")) {
+              cout << "Cannot check out with an empty cart. Try again.\n";
+              continue;
+            }
             cout << "Merchandise for " << buf << ":\n";
             Merch* mrc = merchPicker(merchController.getMerchByTeam(buf));
             userController.addToCart(addMerch(mrc));
           }
-          if (!userController.cartIsEmpty()) {
-            purchaseMerch();
-            userController.clearCart();
-          }
+          userController.clearCart();
         }
         else if(buf == "2")
           break;
@@ -236,7 +247,7 @@ void purchaseConcession(Item item) {
 
 void concessionItemPicker(Vendor vendor) {
   cout << "Items available at " << vendor.name << ":\n";
-  for (int i = 0; i < vendor.items.size(); ++i) {
+  for (int i = 0; i < (int)vendor.items.size(); ++i) {
     cout << "[" << i + 1 << "] " << vendor.items[i].name
          << " – $" << vendor.items[i].cost << "\n";
   }
@@ -254,7 +265,7 @@ void concessionItemPicker(Vendor vendor) {
 void vendorPicker(string location) {
   cout << "Vendor's available at " << location << ":\n";
   auto vendors = concessionsController.getVendors();
-  for (int i = 0; i < vendors.size(); ++i) {
+  for (int i = 0; i < (int)vendors.size(); ++i) {
     cout << "[" << i + 1 << "] " << vendors[i].name << "\t(Location: "
          << vendors[i].location << ")\n";
   }
@@ -270,7 +281,7 @@ void vendorPicker(string location) {
   }
 }
 
-void purchaseMerch() {
+bool purchaseMerch() {
   double total = 0;
   for (Queue<Merch*> cart = userController.currentCart(); !cart.empty(); cart.pop()) {
     cout << cart.front()->team << " " << cart.front()->type << ": $" << cart.front()->cost << "\n";
@@ -302,25 +313,25 @@ void purchaseMerch() {
         getline(cin, buf);
         cout << "Your merchandise will arrive at " << buf << " 5-10 business days from now. \nShipping code: " << merchController.merchConfCode()
           << "\nMerch successfully purchased.\n\n";
-        return;
+        return true;
       }
       else if (buf == "n" || buf == "N") {
         string conf = merchController.merchConfCode();
         cout << "Merch successfully purchased. Make sure to show the " <<
           "confirmation code " << conf << " at the merch booth.\n\n";
-        return;
+        return true;
       }
       else
         cout << "Invalid input. Try again.\n";
     }
   }
   else if (buf == "n" || buf == "N")
-    return;
+    return false;
   else {
     cout << "Invalid input. Try again.\n";
     purchaseMerch();
   }
-
+  return false;
 }
 
 Merch* addMerch(Merch* merch) {
