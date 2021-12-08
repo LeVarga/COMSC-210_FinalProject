@@ -1,212 +1,286 @@
-1;NFL (NFC);11/23/2022;San Francisco;Philadelphia Eagles;San Francisco 49ers
-2;NBA (Central);9/29/2024;Chicago;Cleveland Cavaliers;Chicago Bulls
-3;NBA (Southwest);10/13/2024;New Orleans;Dallas Mavericks;New Orleans Pelicans
-4;NHL (Metropolitan);3/14/2023;Columbus Blue;Pittsburgh Penguins;Columbus Blue Jackets
-5;NBA (Northwest);6/25/2024;Minnesota;Utah Jazz;Minnesota Timberwolves
-6;NHL (Metropolitan);1/5/2024;New York;Pittsburgh Penguins;New York Islanders
-7;NFL (AFC);9/10/2023;Denver;Cleveland Browns;Denver Broncos
-8;NBA (Southeast);8/7/2024;Washington;Atlanta Hawks;Washington Wizards
-9;NHL (Pacific);10/10/2023;Edmonton;Los Angeles Kings;Edmonton Oilers
-10;NFL (AFC);11/14/2024;Baltimore;Pittsburgh Steelers;Baltimore Ravens
-11;NBA (Southwest);4/15/2022;Houston;Dallas Mavericks;Houston Rockets
-12;NHL (Central);5/16/2024;Chicago;Colorado Avalanche;Chicago Blackhawks
-13;NHL (Central);8/26/2022;Arizona;Dallas Stars;Arizona Coyotes
-14;NHL (Atlantic);1/9/2024;Boston;Buffalo Sabres;Boston Bruins
-15;NBA (Southwest);6/6/2022;New Orleans;Dallas Mavericks;New Orleans Pelicans
-16;NBA (Southeast);1/7/2023;Charlotte;Miami Heat;Charlotte Hornets
-17;NHL (Pacific);10/5/2023;San Jose;Vegas Golden Knights;San Jose Sharks
-18;MLB;9/20/2023;Atlanta;Chicago White Sox;Atlanta Braves
-19;NBA (Northwest);8/25/2023;Minnesota;Portland Trail Blazers;Minnesota Timberwolves
-20;NFL (NFC);4/25/2024;Arizona;Carolina Panthers;Arizona Cardinals
-21;NFL (NFC);1/27/2024;Seattle;Minnesota Vikings;Seattle Seahawks
-22;NHL (Pacific);2/17/2024;Edmonton;San Jose Sharks;Edmonton Oilers
-23;NBA (Atlantic);3/30/2024;Boston;New York Knicks;Boston Celtics
-24;MLB;3/22/2022;Chicago;Pittsburgh Pirates;Chicago Cubs
-25;MLB;3/5/2023;San Francisco;Colorado Rockies;San Francisco Giants
-26;NHL (Metropolitan);8/6/2024;Washington;Columbus Blue Jackets;Washington Capitals
-27;NBA (Southeast);12/23/2023;Washington;Miami Heat;Washington Wizards
-28;NBA (Pacific);5/29/2022;Sacramento;LA Clippers;Sacramento Kings
-29;MLB;5/7/2024;New York;San Francisco Giants;New York Mets
-30;NHL (Central);11/21/2024;Colorado;St. Louis Blues;Colorado Avalanche
-31;NBA (Atlantic);10/7/2023;Boston;Philadelphia 76ers;Boston Celtics
-32;NBA (Southeast);9/19/2024;Miami;Washington Wizards;Miami Heat
-33;NHL (Atlantic);1/12/2023;Montreal;Boston Bruins;Montreal Canadiens
-34;NBA (Atlantic);7/8/2022;New York;Philadelphia 76ers;New York Knicks
-35;NBA (Central);6/1/2024;Indiana;Detroit Pistons;Indiana Pacers
-36;NBA (Pacific);5/22/2023;Los Angeles;Phoenix Suns;LA Clippers
-37;NHL (Central);10/13/2023;Chicago;St. Louis Blues;Chicago Blackhawks
-38;NFL (NFC);4/12/2022;Arizona;Washington Football Team;Arizona Cardinals
-39;NFL (AFC);11/17/2023;Buffalo;Cincinnati Bengals;Buffalo Bills
-40;NBA (Atlantic);10/25/2024;New York;Brooklyn Nets;New York Knicks
-41;NHL (Atlantic);2/2/2022;Florida;Tampa Bay Lightning;Florida Panthers
-42;NBA (Atlantic);4/1/2024;Brooklyn;Boston Celtics;Brooklyn Nets
-43;NHL (Atlantic);8/22/2023;Detroit;Buffalo Sabres;Detroit Red Wings
-44;NFL (AFC);11/20/2024;Los Angeles;New York Jets;Los Angeles Chargers
-45;NFL (AFC);9/25/2022;Pittsburgh;New England Patriots;Pittsburgh Steelers
-46;NBA (Southeast);11/22/2023;Atlanta;Charlotte Hornets;Atlanta Hawks
-47;NHL (Pacific);5/10/2024;Seattle;Los Angeles Kings;Seattle Kraken
-48;NBA (Central);9/24/2023;Cleveland;Detroit Pistons;Cleveland Cavaliers
-49;MLB;7/27/2022;Atlanta;Oakland Athletics;Atlanta Braves
-50;NHL (Atlantic);7/5/2022;Toronto;Ottawa Senators;Toronto Maple Leafs
-51;NFL (AFC);11/29/2024;Las Vegas;Tennessee Titans;Las Vegas Raiders
-52;NHL (Pacific);8/8/2023;Calgary;Vegas Golden Knights;Calgary Flames
-53;NHL (Pacific);7/28/2023;Calgary;San Jose Sharks;Calgary Flames
-54;NBA (Pacific);4/20/2024;Los Angeles;Sacramento Kings;Los Angeles Lakers
-55;NBA (Southwest);7/13/2024;San Antonio;Memphis Grizzlies;San Antonio Spurs
-56;NBA (Atlantic);5/12/2024;Philadelphia;New York Knicks;Philadelphia 76ers
-57;NBA (Pacific);10/14/2022;Los Angeles;Phoenix Suns;LA Clippers
-58;NFL (AFC);3/17/2024;Jacksonville;Cincinnati Bengals;Jacksonville Jaguars
-59;MLB;6/1/2024;Colorado;Milwaukee Brewers;Colorado Rockies
-60;NBA (Pacific);1/23/2022;Los Angeles;Phoenix Suns;LA Clippers
-61;NBA (Southeast);11/4/2024;Charlotte;Washington Wizards;Charlotte Hornets
-62;NFL (NFC);11/13/2024;Arizona;Detroit Lions;Arizona Cardinals
-63;NFL (AFC);11/23/2023;Cincinnati;Denver Broncos;Cincinnati Bengals
-64;NHL (Atlantic);10/9/2022;Ottawa;Tampa Bay Lightning;Ottawa Senators
-65;NBA (Pacific);4/3/2022;Los Angeles;Los Angeles Lakers;LA Clippers
-66;NBA (Northwest);2/3/2023;Minnesota;Oklahoma City Thunder;Minnesota Timberwolves
-67;NBA (Southwest);3/16/2022;Houston;Dallas Mavericks;Houston Rockets
-68;NBA (Northwest);1/12/2022;Salt Lake City;Portland Trail Blazers;Utah Jazz
-69;NFL (AFC);10/2/2022;Jacksonville;Las Vegas Raiders;Jacksonville Jaguars
-70;MLB;1/16/2023;Oakland;Boston Red Sox;Oakland Athletics
-71;NBA (Southeast);12/9/2023;Washington;Atlanta Hawks;Washington Wizards
-72;NBA (Pacific);10/29/2023;Golden State;Phoenix Suns;Golden State Warriors
-73;NHL (Metropolitan);3/13/2022;New York;New Jersey Devils;New York Islanders
-74;NHL (Metropolitan);3/21/2024;Columbus Blue;Carolina Hurricanes;Columbus Blue Jackets
-75;NHL (Atlantic);7/12/2024;Florida;Montreal Canadiens;Florida Panthers
-76;NBA (Northwest);5/3/2024;Salt Lake City;Denver Nuggets;Utah Jazz
-77;NHL (Metropolitan);7/14/2022;Pittsburgh;New Jersey Devils;Pittsburgh Penguins
-78;NBA (Central);11/6/2022;Detroit;Milwaukee Bucks;Detroit Pistons
-79;NBA (Southeast);8/23/2022;Washington;Charlotte Hornets;Washington Wizards
-80;NHL (Atlantic);10/16/2024;Buffalo;Tampa Bay Lightning;Buffalo Sabres
-81;NFL (NFC);6/20/2022;Seattle;San Francisco 49ers;Seattle Seahawks
-82;NHL (Metropolitan);12/12/2022;Washington;Philadelphia Flyers;Washington Capitals
-83;NBA (Atlantic);4/26/2023;New York;Toronto Raptors;New York Knicks
-84;NBA (Pacific);10/24/2024;Phoenix;LA Clippers;Phoenix Suns
-85;NFL (NFC);8/8/2023;Dallas;Seattle Seahawks;Dallas Cowboys
-86;NBA (Central);4/11/2023;Detroit;Cleveland Cavaliers;Detroit Pistons
-87;NBA (Northwest);8/30/2024;Oklahoma City;Denver Nuggets;Oklahoma City Thunder
-88;MLB;12/18/2022;Arlington;Tampa Bay Rays;Texas Rangers
-89;NFL (NFC);5/12/2023;Tampa Bay;New York Giants;Tampa Bay Buccaneers
-90;NHL (Atlantic);1/18/2022;Montreal;Boston Bruins;Montreal Canadiens
-91;NBA (Southeast);12/29/2023;Washington;Charlotte Hornets;Washington Wizards
-92;NFL (AFC);6/6/2023;Baltimore;Cleveland Browns;Baltimore Ravens
-93;NHL (Metropolitan);12/9/2023;Washington;Carolina Hurricanes;Washington Capitals
-94;NBA (Pacific);7/29/2023;Phoenix;Golden State Warriors;Phoenix Suns
-95;NFL (AFC);1/21/2024;Kansas City;New England Patriots;Kansas City Chiefs
-96;NHL (Atlantic);9/2/2024;Ottawa;Buffalo Sabres;Ottawa Senators
-97;NBA (Pacific);5/26/2022;Phoenix;LA Clippers;Phoenix Suns
-98;NHL (Pacific);5/1/2022;Vegas Golden;Calgary Flames;Vegas Golden Knights
-99;NBA (Southwest);9/15/2024;New Orleans;Memphis Grizzlies;New Orleans Pelicans
-100;NBA (Southwest);8/8/2024;Dallas;San Antonio Spurs;Dallas Mavericks
-101;NHL (Atlantic);8/19/2023;Florida;Buffalo Sabres;Florida Panthers
-102;NFL (NFC);7/29/2023;Los Angeles;Detroit Lions;Los Angeles Rams
-103;NBA (Central);9/3/2023;Chicago;Milwaukee Bucks;Chicago Bulls
-104;NBA (Southeast);12/10/2023;Orlando;Charlotte Hornets;Orlando Magic
-105;NBA (Southwest);1/24/2024;New Orleans;Memphis Grizzlies;New Orleans Pelicans
-106;NBA (Atlantic);12/30/2024;Philadelphia;New York Knicks;Philadelphia 76ers
-107;NBA (Northwest);12/23/2023;Portland;Minnesota Timberwolves;Portland Trail Blazers
-108;NBA (Atlantic);6/25/2023;Philadelphia;New York Knicks;Philadelphia 76ers
-109;NBA (Central);1/25/2023;Indiana;Milwaukee Bucks;Indiana Pacers
-110;NBA (Pacific);1/5/2023;Phoenix;Sacramento Kings;Phoenix Suns
-111;NBA (Atlantic);4/22/2022;Toronto;Philadelphia 76ers;Toronto Raptors
-112;NBA (Southwest);6/29/2022;San Antonio;Houston Rockets;San Antonio Spurs
-113;NFL (NFC);10/2/2023;Tampa Bay;Seattle Seahawks;Tampa Bay Buccaneers
-114;NHL (Atlantic);9/19/2023;Toronto;Boston Bruins;Toronto Maple Leafs
-115;NBA (Pacific);4/6/2024;Golden State;Sacramento Kings;Golden State Warriors
-116;NBA (Central);7/13/2023;Milwaukee;Cleveland Cavaliers;Milwaukee Bucks
-117;MLB;9/28/2023;Cleveland;Boston Red Sox;Cleveland Guardians
-118;NBA (Southwest);2/17/2023;New Orleans;Memphis Grizzlies;New Orleans Pelicans
-119;NBA (Southwest);12/3/2022;New Orleans;Memphis Grizzlies;New Orleans Pelicans
-120;NBA (Central);7/4/2022;Milwaukee;Chicago Bulls;Milwaukee Bucks
-121;NFL (NFC);5/25/2022;Dallas;Arizona Cardinals;Dallas Cowboys
-122;NBA (Central);10/28/2024;Indiana;Milwaukee Bucks;Indiana Pacers
-123;NHL (Pacific);5/4/2023;Los Angeles;Vancouver Canucks;Los Angeles Kings
-124;NHL (Metropolitan);5/4/2024;Columbus Blue;New York Rangers;Columbus Blue Jackets
-125;NHL (Central);2/27/2022;Dallas;Nashville Predators;Dallas Stars
-126;NFL (AFC);6/22/2024;Indianapolis;Kansas City Chiefs;Indianapolis Colts
-127;NHL (Central);8/14/2022;Nashville;St. Louis Blues;Nashville Predators
-128;MLB;4/17/2024;San Francisco;Chicago Cubs;San Francisco Giants
-129;NFL (AFC);3/11/2022;Las Vegas;Tennessee Titans;Las Vegas Raiders
-130;MLB;3/12/2022;Cleveland;Baltimore Orioles;Cleveland Guardians
-131;NHL (Metropolitan);7/15/2023;Raleigh;Philadelphia Flyers;Carolina Hurricanes
-132;NBA (Central);9/18/2024;Chicago;Cleveland Cavaliers;Chicago Bulls
-133;NBA (Central);6/11/2024;Detroit;Indiana Pacers;Detroit Pistons
-134;NBA (Central);1/26/2022;Detroit;Milwaukee Bucks;Detroit Pistons
-135;NBA (Pacific);4/21/2023;Los Angeles;Phoenix Suns;Los Angeles Lakers
-136;MLB;9/19/2024;Los Angeles;Boston Red Sox;Los Angeles Angels
-137;NBA (Southeast);12/17/2024;Washington;Orlando Magic;Washington Wizards
-138;NBA (Atlantic);11/7/2022;Philadelphia;Boston Celtics;Philadelphia 76ers
-139;NBA (Southeast);12/16/2022;Charlotte;Orlando Magic;Charlotte Hornets
-140;NHL (Central);8/15/2024;St. Louis;Colorado Avalanche;St. Louis Blues
-141;NHL (Metropolitan);2/4/2022;Pittsburgh;Carolina Hurricanes;Pittsburgh Penguins
-142;NBA (Pacific);1/16/2022;Los Angeles;LA Clippers;Los Angeles Lakers
-143;NBA (Southwest);9/17/2022;San Antonio;Dallas Mavericks;San Antonio Spurs
-144;NBA (Southwest);7/30/2022;Houston;New Orleans Pelicans;Houston Rockets
-145;NBA (Northwest);12/13/2024;Salt Lake City;Denver Nuggets;Utah Jazz
-146;NBA (Southwest);8/10/2024;Memphis;Houston Rockets;Memphis Grizzlies
-147;NBA (Central);6/28/2022;Cleveland;Chicago Bulls;Cleveland Cavaliers
-148;MLB;8/13/2024;San Diego;Minnesota Twins;San Diego Padres
-149;NBA (Northwest);12/12/2023;Minnesota;Utah Jazz;Minnesota Timberwolves
-150;NHL (Atlantic);5/15/2022;Montreal;Buffalo Sabres;Montreal Canadiens
-151;NHL (Atlantic);3/28/2022;Tampa Bay;Florida Panthers;Tampa Bay Lightning
-152;NHL (Metropolitan);2/4/2024;Columbus Blue;New York Islanders;Columbus Blue Jackets
-153;NBA (Southeast);3/17/2024;Orlando;Miami Heat;Orlando Magic
-154;NHL (Atlantic);10/23/2024;Tampa Bay;Boston Bruins;Tampa Bay Lightning
-155;NHL (Atlantic);11/3/2023;Detroit;Ottawa Senators;Detroit Red Wings
-156;NFL (AFC);5/9/2024;Pittsburgh;Las Vegas Raiders;Pittsburgh Steelers
-157;NBA (Atlantic);8/30/2023;New York;Philadelphia 76ers;New York Knicks
-158;NBA (Atlantic);4/1/2024;Boston;Brooklyn Nets;Boston Celtics
-159;NBA (Southeast);3/10/2023;Washington;Orlando Magic;Washington Wizards
-160;NFL (AFC);11/5/2023;Cleveland;Indianapolis Colts;Cleveland Browns
-161;NBA (Northwest);8/11/2024;Denver;Portland Trail Blazers;Denver Nuggets
-162;NBA (Southeast);9/10/2022;Miami;Orlando Magic;Miami Heat
-163;NFL (AFC);7/27/2023;Pittsburgh;Miami Dolphins;Pittsburgh Steelers
-164;NBA (Southwest);4/25/2022;New Orleans;Dallas Mavericks;New Orleans Pelicans
-165;NHL (Metropolitan);10/20/2022;New York;Philadelphia Flyers;New York Islanders
-166;NBA (Pacific);9/25/2022;Sacramento;Golden State Warriors;Sacramento Kings
-167;NBA (Central);2/27/2022;Milwaukee;Chicago Bulls;Milwaukee Bucks
-168;NHL (Central);4/18/2023;Winnipeg;Nashville Predators;Winnipeg Jets
-169;NHL (Atlantic);9/16/2023;Montreal;Florida Panthers;Montreal Canadiens
-170;NHL (Atlantic);12/21/2023;Tampa Bay;Buffalo Sabres;Tampa Bay Lightning
-171;NFL (AFC);11/2/2024;Kansas City;New England Patriots;Kansas City Chiefs
-172;NBA (Central);4/2/2024;Milwaukee;Detroit Pistons;Milwaukee Bucks
-173;NBA (Southwest);4/30/2024;San Antonio;Memphis Grizzlies;San Antonio Spurs
-174;NBA (Pacific);9/26/2023;Los Angeles;Phoenix Suns;LA Clippers
-175;NBA (Pacific);6/13/2024;Golden State;Sacramento Kings;Golden State Warriors
-176;MLB;11/12/2023;Cincinnati;Miami Marlins;Cincinnati Reds
-177;NBA (Pacific);4/26/2024;Los Angeles;Golden State Warriors;Los Angeles Lakers
-178;NBA (Pacific);10/26/2024;Los Angeles;Sacramento Kings;Los Angeles Lakers
-179;NBA (Southeast);6/10/2022;Orlando;Atlanta Hawks;Orlando Magic
-180;NHL (Metropolitan);9/6/2022;New York;Carolina Hurricanes;New York Rangers
-181;NHL (Pacific);11/16/2022;Calgary;Los Angeles Kings;Calgary Flames
-182;NBA (Central);10/3/2024;Detroit;Milwaukee Bucks;Detroit Pistons
-183;NBA (Central);10/5/2024;Milwaukee;Cleveland Cavaliers;Milwaukee Bucks
-184;NHL (Metropolitan);7/28/2023;New Jersey;Philadelphia Flyers;New Jersey Devils
-185;MLB;2/25/2023;Arizona;Miami Marlins;Arizona Diamondbacks
-186;NBA (Southwest);1/6/2022;New Orleans;Houston Rockets;New Orleans Pelicans
-187;NHL (Central);12/30/2024;Dallas;Arizona Coyotes;Dallas Stars
-188;NBA (Pacific);7/21/2024;Los Angeles;Golden State Warriors;LA Clippers
-189;NBA (Central);8/5/2023;Indiana;Cleveland Cavaliers;Indiana Pacers
-190;MLB;10/9/2022;Toronto;Miami Marlins;Toronto Blue Jays
-191;NHL (Metropolitan);1/1/2023;Philadelphia;New York Islanders;Philadelphia Flyers
-192;NFL (NFC);7/20/2023;Los Angeles;Seattle Seahawks;Los Angeles Rams
-193;NFL (NFC);12/23/2022;Chicago;Carolina Panthers;Chicago Bears
-194;NBA (Atlantic);6/10/2022;Brooklyn;Toronto Raptors;Brooklyn Nets
-195;NBA (Central);7/2/2023;Indiana;Detroit Pistons;Indiana Pacers
-196;NBA (Pacific);9/8/2024;Los Angeles;Golden State Warriors;LA Clippers
-197;NBA (Northwest);10/30/2022;Denver;Portland Trail Blazers;Denver Nuggets
-198;NFL (NFC);12/30/2022;Dallas;Philadelphia Eagles;Dallas Cowboys
-199;NBA (Southwest);3/4/2022;San Antonio;Dallas Mavericks;San Antonio Spurs
-200;NBA (Pacific);12/5/2024;Golden State;Los Angeles Lakers;Golden State Warriors
-201;NFL (AFC);2/16/2022;Indianapolis;Buffalo Bills;Indianapolis Colts
-202;NBA (Atlantic);9/26/2022;Philadelphia;Boston Celtics;Philadelphia 76ers
-203;NBA (Southeast);11/5/2024;Orlando;Washington Wizards;Orlando Magic
-204;NBA (Atlantic);5/23/2023;Boston;Toronto Raptors;Boston Celtics
-205;NBA (Pacific);7/9/2024;Los Angeles;Golden State Warriors;LA Clippers
-206;NHL (Pacific);4/13/2024;Los Angeles;Seattle Kraken;Los Angeles Kings
-207;NBA (Atlantic);6/3/2023;Brooklyn;Toronto Raptors;Brooklyn Nets
-208;NFL (AFC);12/15/2022;Pittsburgh;New England Patriots;Pittsburgh Steelers
-209;MLB;2/20/2023;Cleveland;Atlanta Braves;Cleveland Guardians
-210;NHL (Pacific);10/5/2023;Anaheim;Vancouver Canucks;Anaheim Ducks
-211;NBA (Northwest);3/2/2022;Portland;Utah Jazz;Portland Trail Blazers
-212;NBA (Northwest);12/1/2023;Denver;Utah Jazz;Denver Nuggets
+1;NFL (AFC);12/8/2023;Miami;Las Vegas Raiders;Miami Dolphins
+2;NHL (Central);8/25/2024;Dallas;Chicago Blackhawks;Dallas Stars
+3;MLB;1/30/2024;San Diego;Detroit Tigers;San Diego Padres
+4;NHL (Metropolitan);6/17/2023;Newark;Carolina Hurricanes;New Jersey Devils
+5;NFL (AFC);12/5/2024;Los Angeles;Buffalo Bills;Los Angeles Chargers
+6;NBA (Southwest);5/23/2024;Houston;San Antonio Spurs;Houston Rockets
+7;NHL (Pacific);6/22/2022;Edmonton;San Jose Sharks;Edmonton Oilers
+8;NHL (Atlantic);11/8/2022;Boston;Tampa Bay Lightning;Boston Bruins
+9;NBA (Southeast);10/30/2024;Charlotte;Washington Wizards;Charlotte Hornets
+10;NHL (Pacific);4/8/2023;Las Vegas;Vancouver Canucks;Vegas Golden Knights
+11;NHL (Metropolitan);9/24/2023;Philadelphia;New York Rangers;Philadelphia Flyers
+12;NFL (NFC);2/7/2024;Atlanta;Tampa Bay Buccaneers;Atlanta Falcons
+13;NBA (Southeast);8/23/2024;Charlotte;Washington Wizards;Charlotte Hornets
+14;NHL (Central);7/8/2024;St. Louis;Nashville Predators;St. Louis Blues
+15;NHL (Atlantic);5/27/2022;Florida;Boston Bruins;Florida Panthers
+16;NHL (Atlantic);2/8/2024;Tampa Bay;Ottawa Senators;Tampa Bay Lightning
+17;NHL (Pacific);4/7/2024;Anaheim;Vegas Golden Knights;Anaheim Ducks
+18;NFL (NFC);7/24/2023;Dallas;Tampa Bay Buccaneers;Dallas Cowboys
+19;NBA (Northwest);6/8/2022;Salt Lake City;Portland Trail Blazers;Utah Jazz
+20;NBA (Atlantic);10/29/2024;Toronto;New York Knicks;Toronto Raptors
+21;NBA (Pacific);11/6/2022;Los Angeles;LA Clippers;Los Angeles Lakers
+22;MLB;7/30/2023;Seattle;Miami Marlins;Seattle Mariners
+23;NHL (Atlantic);9/17/2023;Buffalo;Tampa Bay Lightning;Buffalo Sabres
+24;MLB;12/13/2024;San Francisco;Pittsburgh Pirates;San Francisco Giants
+25;NBA (Pacific);9/2/2023;San Francisco;LA Clippers;Golden State Warriors
+26;NHL (Atlantic);3/3/2022;Tampa Bay;Detroit Red Wings;Tampa Bay Lightning
+27;NBA (Central);12/3/2023;Detroit;Chicago Bulls;Detroit Pistons
+28;NHL (Central);8/4/2024;Nashville;Arizona Coyotes;Nashville Predators
+29;NBA (Southwest);11/25/2022;Memphis;Dallas Mavericks;Memphis Grizzlies
+30;MLB;5/5/2022;Houston;Boston Red Sox;Houston Astros
+31;NFL (AFC);12/10/2022;Buffalo;Kansas City Chiefs;Buffalo Bills
+32;NBA (Southwest);11/29/2023;Dallas;Memphis Grizzlies;Dallas Mavericks
+33;NBA (Central);8/20/2023;Chicago;Cleveland Cavaliers;Chicago Bulls
+34;MLB;11/27/2023;Detroit;Washington Nationals;Detroit Tigers
+35;NBA (Northwest);9/8/2023;Minnesota;Utah Jazz;Minnesota Timberwolves
+36;NHL (Pacific);8/2/2022;Anaheim;Vegas Golden Knights;Anaheim Ducks
+37;NHL (Pacific);5/23/2023;Calgary;Edmonton Oilers;Calgary Flames
+38;NBA (Atlantic);4/1/2023;Philadelphia;Brooklyn Nets;Philadelphia 76ers
+39;NFL (NFC);6/8/2023;Green Bay;New York Giants;Green Bay Packers
+40;NFL (NFC);5/8/2023;Minnesota;San Francisco 49ers;Minnesota Vikings
+41;MLB;11/22/2024;Philadelphia;New York Mets;Philadelphia Phillies
+42;NFL (AFC);8/3/2023;Houston;New York Jets;Houston Texans
+43;MLB;10/1/2024;Detroit;San Diego Padres;Detroit Tigers
+44;NBA (Northwest);9/23/2022;Denver;Oklahoma City Thunder;Denver Nuggets
+45;NBA (Northwest);5/27/2022;Denver;Oklahoma City Thunder;Denver Nuggets
+46;NHL (Central);3/29/2022;Glendale;Chicago Blackhawks;Arizona Coyotes
+47;NHL (Pacific);5/20/2024;Seattle;Anaheim Ducks;Seattle Kraken
+48;NHL (Metropolitan);9/25/2023;Washington;Pittsburgh Penguins;Washington Capitals
+49;NFL (AFC);12/8/2023;Miami;New England Patriots;Miami Dolphins
+50;NBA (Pacific);8/6/2024;Phoenix;Golden State Warriors;Phoenix Suns
+51;NHL (Metropolitan);6/25/2023;Philadelphia;Washington Capitals;Philadelphia Flyers
+52;NBA (Central);9/26/2024;Detroit;Cleveland Cavaliers;Detroit Pistons
+53;NFL (NFC);5/23/2024;Detroit;New Orleans Saints;Detroit Lions
+54;NFL (AFC);4/15/2024;Cincinnati;Cleveland Browns;Cincinnati Bengals
+55;NHL (Metropolitan);10/21/2023;Raleigh;Washington Capitals;Carolina Hurricanes
+56;NHL (Atlantic);4/14/2022;Ottawa;Boston Bruins;Ottawa Senators
+57;NBA (Atlantic);2/10/2024;Toronto;Boston Celtics;Toronto Raptors
+58;NBA (Southwest);6/25/2024;New Orleans;San Antonio Spurs;New Orleans Pelicans
+59;NFL (NFC);4/3/2024;Washington;Arizona Cardinals;Washington Football Team
+60;NFL (NFC);7/28/2022;Detroit;Washington Football Team;Detroit Lions
+61;NBA (Pacific);10/20/2023;Sacramento;Los Angeles Lakers;Sacramento Kings
+62;NFL (AFC);10/8/2024;Kansas City;Houston Texans;Kansas City Chiefs
+63;NHL (Central);4/16/2023;Colorado;Chicago Blackhawks;Colorado Avalanche
+64;NBA (Southeast);11/10/2024;Washington;Atlanta Hawks;Washington Wizards
+65;NFL (AFC);6/12/2023;New York City;Houston Texans;New York Jets
+66;NBA (Atlantic);11/5/2022;Toronto;Boston Celtics;Toronto Raptors
+67;NHL (Metropolitan);2/26/2024;Philadelphia;Columbus Blue Jackets;Philadelphia Flyers
+68;NBA (Southwest);7/16/2024;San Antonio;Dallas Mavericks;San Antonio Spurs
+69;NBA (Northwest);8/3/2022;Minnesota;Oklahoma City Thunder;Minnesota Timberwolves
+70;MLB;9/18/2024;Baltimore;Milwaukee Brewers;Baltimore Orioles
+71;NBA (Northwest);12/8/2024;Oklahoma City;Denver Nuggets;Oklahoma City Thunder
+72;NHL (Pacific);10/26/2023;Las Vegas;Vancouver Canucks;Vegas Golden Knights
+73;NFL (NFC);6/22/2024;Detroit;Atlanta Falcons;Detroit Lions
+74;NHL (Atlantic);4/27/2023;Ottawa;Florida Panthers;Ottawa Senators
+75;NBA (Northwest);6/8/2024;Portland;Oklahoma City Thunder;Portland Trail Blazers
+76;NBA (Northwest);7/17/2022;Portland;Minnesota Timberwolves;Portland Trail Blazers
+77;NHL (Central);5/2/2024;Dallas;Colorado Avalanche;Dallas Stars
+78;NFL (AFC);1/1/2022;Houston;Indianapolis Colts;Houston Texans
+79;NBA (Southeast);4/13/2023;Charlotte;Washington Wizards;Charlotte Hornets
+80;NBA (Southwest);5/1/2024;San Antonio;Houston Rockets;San Antonio Spurs
+81;NBA (Southeast);5/6/2024;Miami;Orlando Magic;Miami Heat
+82;NFL (NFC);10/23/2024;San Francisco;Los Angeles Rams;San Francisco 49ers
+83;NBA (Northwest);9/15/2022;Denver;Utah Jazz;Denver Nuggets
+84;NBA (Northwest);4/4/2022;Minnesota;Portland Trail Blazers;Minnesota Timberwolves
+85;NBA (Atlantic);7/1/2024;New York City;Philadelphia 76ers;New York Knicks
+86;NHL (Atlantic);7/9/2024;Tampa Bay;Florida Panthers;Tampa Bay Lightning
+87;NBA (Central);5/10/2023;Indianapolis;Detroit Pistons;Indiana Pacers
+88;NBA (Southwest);11/9/2023;Dallas;New Orleans Pelicans;Dallas Mavericks
+89;NBA (Southwest);7/3/2023;Memphis;New Orleans Pelicans;Memphis Grizzlies
+90;NBA (Southwest);4/9/2023;New Orleans;Memphis Grizzlies;New Orleans Pelicans
+91;NBA (Southwest);4/23/2023;Memphis;San Antonio Spurs;Memphis Grizzlies
+92;NBA (Southwest);12/2/2024;San Antonio;Dallas Mavericks;San Antonio Spurs
+93;NHL (Pacific);10/3/2023;Anaheim;Vegas Golden Knights;Anaheim Ducks
+94;NBA (Pacific);1/26/2023;Los Angeles;Los Angeles Lakers;LA Clippers
+95;NBA (Southwest);6/17/2023;Memphis;San Antonio Spurs;Memphis Grizzlies
+96;NBA (Central);7/9/2024;Cleveland;Indiana Pacers;Cleveland Cavaliers
+97;NBA (Central);11/30/2024;Cleveland;Detroit Pistons;Cleveland Cavaliers
+98;NBA (Northwest);10/24/2024;Minnesota;Denver Nuggets;Minnesota Timberwolves
+99;NHL (Metropolitan);12/12/2024;New York City;New York Rangers;New York Islanders
+100;NBA (Southwest);1/27/2022;Dallas;Memphis Grizzlies;Dallas Mavericks
+101;NHL (Central);10/24/2023;Glendale;Chicago Blackhawks;Arizona Coyotes
+102;NBA (Southwest);3/24/2024;Houston;New Orleans Pelicans;Houston Rockets
+103;NBA (Central);7/9/2024;Chicago;Detroit Pistons;Chicago Bulls
+104;NFL (AFC);9/4/2023;Las Vegas;Pittsburgh Steelers;Las Vegas Raiders
+105;NBA (Southwest);12/27/2022;Memphis;Houston Rockets;Memphis Grizzlies
+106;NFL (NFC);9/10/2023;Glendale;Chicago Bears;Arizona Cardinals
+107;NBA (Atlantic);10/2/2023;Boston;Toronto Raptors;Boston Celtics
+108;NBA (Pacific);6/12/2022;San Francisco;Los Angeles Lakers;Golden State Warriors
+109;NHL (Atlantic);4/28/2022;Florida;Ottawa Senators;Florida Panthers
+110;NBA (Atlantic);8/1/2022;Philadelphia;Boston Celtics;Philadelphia 76ers
+111;NHL (Pacific);7/14/2023;Edmonton;Los Angeles Kings;Edmonton Oilers
+112;NBA (Pacific);5/17/2022;Sacramento;Phoenix Suns;Sacramento Kings
+113;NBA (Southwest);10/21/2022;Dallas;Houston Rockets;Dallas Mavericks
+114;NFL (NFC);9/18/2023;Raleigh;Detroit Lions;Carolina Panthers
+115;NHL (Atlantic);12/19/2023;Montreal;Toronto Maple Leafs;Montreal Canadiens
+116;NBA (Southeast);10/12/2024;Orlando;Washington Wizards;Orlando Magic
+117;NBA (Southwest);6/2/2024;San Antonio;Memphis Grizzlies;San Antonio Spurs
+118;NHL (Atlantic);4/26/2023;Montreal;Ottawa Senators;Montreal Canadiens
+119;MLB;7/3/2024;Minnesota;Kansas City Royals;Minnesota Twins
+120;NFL (NFC);3/11/2022;Tampa Bay;Detroit Lions;Tampa Bay Buccaneers
+121;NBA (Central);9/11/2024;Chicago;Detroit Pistons;Chicago Bulls
+122;MLB;4/26/2024;Arlington;Arizona Diamondbacks;Texas Rangers
+123;NBA (Northwest);10/8/2024;Minnesota;Utah Jazz;Minnesota Timberwolves
+124;NFL (AFC);1/6/2022;Cleveland;Indianapolis Colts;Cleveland Browns
+125;NBA (Central);2/26/2023;Milwaukee;Detroit Pistons;Milwaukee Bucks
+126;NBA (Pacific);10/30/2022;Los Angeles;Los Angeles Lakers;LA Clippers
+127;NBA (Central);4/10/2023;Cleveland;Indiana Pacers;Cleveland Cavaliers
+128;NHL (Metropolitan);3/18/2024;Columbus;New Jersey Devils;Columbus Blue Jackets
+129;NHL (Central);10/2/2023;Chicago;Colorado Avalanche;Chicago Blackhawks
+130;NFL (AFC);1/13/2022;Miami;Cincinnati Bengals;Miami Dolphins
+131;NBA (Atlantic);3/11/2023;New York City;Boston Celtics;Brooklyn Nets
+132;NHL (Central);10/24/2024;Glendale;Colorado Avalanche;Arizona Coyotes
+133;NHL (Pacific);12/23/2022;San Jose;Anaheim Ducks;San Jose Sharks
+134;NBA (Pacific);9/28/2024;Los Angeles;LA Clippers;Los Angeles Lakers
+135;NBA (Central);2/20/2022;Indianapolis;Detroit Pistons;Indiana Pacers
+136;MLB;3/5/2024;Arlington;Cleveland Guardians;Texas Rangers
+137;NBA (Southeast);8/29/2024;Orlando;Miami Heat;Orlando Magic
+138;NBA (Southeast);6/20/2022;Charlotte;Atlanta Hawks;Charlotte Hornets
+139;NFL (AFC);12/21/2022;Houston;Las Vegas Raiders;Houston Texans
+140;NBA (Central);12/21/2024;Cleveland;Indiana Pacers;Cleveland Cavaliers
+141;NHL (Central);9/28/2024;Chicago;Minnesota Wild;Chicago Blackhawks
+142;NBA (Southwest);4/17/2023;New Orleans;Dallas Mavericks;New Orleans Pelicans
+143;NBA (Southwest);11/7/2024;New Orleans;Houston Rockets;New Orleans Pelicans
+144;MLB;10/26/2023;Philadelphia;New York Mets;Philadelphia Phillies
+145;NBA (Pacific);10/4/2023;Los Angeles;Sacramento Kings;LA Clippers
+146;NBA (Atlantic);5/6/2024;Toronto;Philadelphia 76ers;Toronto Raptors
+147;NBA (Southwest);8/9/2023;Memphis;San Antonio Spurs;Memphis Grizzlies
+148;NBA (Southwest);7/26/2022;San Antonio;Memphis Grizzlies;San Antonio Spurs
+149;NFL (AFC);7/30/2022;Denver;Cincinnati Bengals;Denver Broncos
+150;NFL (NFC);6/28/2022;Tampa Bay;San Francisco 49ers;Tampa Bay Buccaneers
+151;NFL (NFC);5/22/2024;Glendale;Washington Football Team;Arizona Cardinals
+152;NBA (Northwest);1/10/2022;Oklahoma City;Minnesota Timberwolves;Oklahoma City Thunder
+153;NBA (Pacific);12/6/2024;Phoenix;Los Angeles Lakers;Phoenix Suns
+154;NFL (NFC);1/30/2024;New York City;San Francisco 49ers;New York Giants
+155;NBA (Southwest);6/19/2022;Memphis;Houston Rockets;Memphis Grizzlies
+156;MLB;9/11/2024;Arlington;Colorado Rockies;Texas Rangers
+157;NBA (Pacific);10/23/2024;Phoenix;Golden State Warriors;Phoenix Suns
+158;NBA (Northwest);11/7/2024;Portland;Minnesota Timberwolves;Portland Trail Blazers
+159;MLB;1/13/2023;Boston;Miami Marlins;Boston Red Sox
+160;NBA (Central);11/17/2022;Indianapolis;Cleveland Cavaliers;Indiana Pacers
+161;NBA (Pacific);4/29/2023;Sacramento;Golden State Warriors;Sacramento Kings
+162;NBA (Pacific);11/24/2024;San Francisco;Los Angeles Lakers;Golden State Warriors
+163;MLB;9/1/2023;Kansas City;Los Angeles Dodgers;Kansas City Royals
+164;NHL (Pacific);12/8/2024;Anaheim;San Jose Sharks;Anaheim Ducks
+165;NBA (Atlantic);12/28/2023;New York City;Boston Celtics;New York Knicks
+166;NBA (Central);3/4/2024;Detroit;Milwaukee Bucks;Detroit Pistons
+167;NBA (Atlantic);8/8/2022;Philadelphia;Boston Celtics;Philadelphia 76ers
+168;NHL (Metropolitan);9/8/2022;New York City;Philadelphia Flyers;New York Rangers
+169;NBA (Northwest);2/23/2024;Oklahoma City;Portland Trail Blazers;Oklahoma City Thunder
+170;NBA (Atlantic);2/19/2023;Toronto;Brooklyn Nets;Toronto Raptors
+171;NBA (Central);12/28/2023;Milwaukee;Indiana Pacers;Milwaukee Bucks
+172;NFL (NFC);12/15/2024;New York City;Chicago Bears;New York Giants
+173;NFL (AFC);4/12/2023;Cleveland;Tennessee Titans;Cleveland Browns
+174;NBA (Southwest);12/23/2023;San Antonio;New Orleans Pelicans;San Antonio Spurs
+175;NBA (Northwest);4/15/2024;Oklahoma City;Portland Trail Blazers;Oklahoma City Thunder
+176;NBA (Pacific);8/23/2023;Phoenix;Los Angeles Lakers;Phoenix Suns
+177;NHL (Atlantic);5/1/2022;Ottawa;Florida Panthers;Ottawa Senators
+178;NHL (Pacific);2/2/2022;Las Vegas;Calgary Flames;Vegas Golden Knights
+179;NHL (Atlantic);8/19/2024;Toronto;Boston Bruins;Toronto Maple Leafs
+180;NBA (Central);3/18/2022;Detroit;Indiana Pacers;Detroit Pistons
+181;NHL (Pacific);10/28/2023;Seattle;Los Angeles Kings;Seattle Kraken
+182;NFL (AFC);8/25/2024;Foxborough;Los Angeles Chargers;New England Patriots
+183;NBA (Southwest);2/17/2022;San Antonio;Houston Rockets;San Antonio Spurs
+184;NBA (Southeast);5/26/2023;Atlanta;Washington Wizards;Atlanta Hawks
+185;NBA (Central);9/15/2022;Detroit;Milwaukee Bucks;Detroit Pistons
+186;NBA (Southwest);7/21/2023;San Antonio;Dallas Mavericks;San Antonio Spurs
+187;NHL (Atlantic);7/30/2023;Tampa Bay;Montreal Canadiens;Tampa Bay Lightning
+188;NHL (Atlantic);12/1/2024;Montreal;Ottawa Senators;Montreal Canadiens
+189;NBA (Northwest);11/18/2023;Denver;Portland Trail Blazers;Denver Nuggets
+190;NBA (Pacific);9/23/2022;Phoenix;Los Angeles Lakers;Phoenix Suns
+191;NBA (Pacific);2/17/2022;San Francisco;Phoenix Suns;Golden State Warriors
+192;NHL (Pacific);9/13/2022;Edmonton;Seattle Kraken;Edmonton Oilers
+193;NBA (Southwest);5/19/2023;New Orleans;Memphis Grizzlies;New Orleans Pelicans
+194;NBA (Northwest);2/3/2023;Denver;Portland Trail Blazers;Denver Nuggets
+195;NFL (NFC);10/22/2023;Minnesota;New Orleans Saints;Minnesota Vikings
+196;NBA (Southeast);6/4/2022;Orlando;Atlanta Hawks;Orlando Magic
+197;MLB;10/28/2023;Philadelphia;Detroit Tigers;Philadelphia Phillies
+198;NBA (Southwest);1/11/2023;Dallas;New Orleans Pelicans;Dallas Mavericks
+199;NFL (NFC);11/29/2023;Glendale;Philadelphia Eagles;Arizona Cardinals
+200;MLB;2/19/2024;Milwaukee;Cincinnati Reds;Milwaukee Brewers
+201;NBA (Northwest);7/20/2022;Portland;Minnesota Timberwolves;Portland Trail Blazers
+202;NBA (Pacific);12/2/2024;Phoenix;Sacramento Kings;Phoenix Suns
+203;NBA (Central);11/28/2022;Indianapolis;Cleveland Cavaliers;Indiana Pacers
+204;NHL (Pacific);9/29/2022;San Jose;Anaheim Ducks;San Jose Sharks
+205;NHL (Central);6/9/2024;Glendale;Colorado Avalanche;Arizona Coyotes
+206;NHL (Metropolitan);3/2/2023;Columbus;Washington Capitals;Columbus Blue Jackets
+207;NBA (Southeast);5/16/2023;Charlotte;Orlando Magic;Charlotte Hornets
+208;NHL (Pacific);6/4/2023;Calgary;Edmonton Oilers;Calgary Flames
+209;NHL (Pacific);6/3/2024;Los Angeles;Seattle Kraken;Los Angeles Kings
+210;NFL (AFC);7/2/2022;Baltimore;Cleveland Browns;Baltimore Ravens
+211;NBA (Northwest);8/2/2022;Portland;Denver Nuggets;Portland Trail Blazers
+212;NBA (Southeast);3/18/2022;Miami;Atlanta Hawks;Miami Heat
+213;NHL (Metropolitan);6/26/2022;New York City;New York Rangers;New York Islanders
+214;NBA (Pacific);12/2/2022;Los Angeles;Sacramento Kings;LA Clippers
+215;NFL (AFC);3/21/2022;Buffalo;Las Vegas Raiders;Buffalo Bills
+216;NFL (NFC);3/21/2024;Detroit;Arizona Cardinals;Detroit Lions
+217;NBA (Northwest);3/18/2022;Minnesota;Portland Trail Blazers;Minnesota Timberwolves
+218;NHL (Atlantic);3/2/2024;Florida;Buffalo Sabres;Florida Panthers
+219;NBA (Atlantic);11/30/2022;New York City;Boston Celtics;New York Knicks
+220;NBA (Central);1/30/2022;Indianapolis;Detroit Pistons;Indiana Pacers
+221;NFL (NFC);1/27/2023;Dallas;San Francisco 49ers;Dallas Cowboys
+222;NBA (Northwest);6/13/2024;Oklahoma City;Portland Trail Blazers;Oklahoma City Thunder
+223;NFL (AFC);7/10/2022;Cleveland;Pittsburgh Steelers;Cleveland Browns
+224;NFL (AFC);8/14/2022;Las Vegas;Jacksonville Jaguars;Las Vegas Raiders
+225;NBA (Southwest);11/26/2022;Dallas;Memphis Grizzlies;Dallas Mavericks
+226;NBA (Pacific);7/4/2023;Phoenix;Los Angeles Lakers;Phoenix Suns
+227;NFL (AFC);2/12/2023;Miami;Baltimore Ravens;Miami Dolphins
+228;NFL (NFC);10/21/2024;Minnesota;Dallas Cowboys;Minnesota Vikings
+229;NHL (Metropolitan);8/7/2024;Newark;Philadelphia Flyers;New Jersey Devils
+230;NBA (Northwest);4/20/2022;Denver;Oklahoma City Thunder;Denver Nuggets
+231;NHL (Metropolitan);7/22/2023;Newark;Carolina Hurricanes;New Jersey Devils
+232;NHL (Atlantic);2/5/2023;Toronto;Ottawa Senators;Toronto Maple Leafs
+233;NBA (Atlantic);6/13/2022;New York City;Philadelphia 76ers;Brooklyn Nets
+234;MLB;3/17/2023;Washington;Detroit Tigers;Washington Nationals
+235;NFL (NFC);5/16/2023;San Francisco;Seattle Seahawks;San Francisco 49ers
+236;NBA (Pacific);7/26/2024;Los Angeles;Golden State Warriors;Los Angeles Lakers
+237;NFL (AFC);6/15/2024;Jacksonville;Denver Broncos;Jacksonville Jaguars
+238;NHL (Metropolitan);5/24/2023;Newark;Pittsburgh Penguins;New Jersey Devils
+239;MLB;10/19/2023;Chicago;Cleveland Guardians;Chicago White Sox
+240;NBA (Southwest);1/26/2024;Dallas;Houston Rockets;Dallas Mavericks
+241;NBA (Southeast);8/25/2022;Atlanta;Miami Heat;Atlanta Hawks
+242;NHL (Atlantic);2/22/2024;Tampa Bay;Boston Bruins;Tampa Bay Lightning
+243;NBA (Southwest);6/8/2022;Memphis;Dallas Mavericks;Memphis Grizzlies
+244;NBA (Pacific);3/29/2024;Phoenix;Los Angeles Lakers;Phoenix Suns
+245;NBA (Southwest);2/6/2022;Houston;Dallas Mavericks;Houston Rockets
+246;NHL (Central);12/30/2023;Winnipeg;St. Louis Blues;Winnipeg Jets
+247;NBA (Atlantic);12/26/2023;New York City;Brooklyn Nets;New York Knicks
+248;MLB;10/7/2022;Washington;Miami Marlins;Washington Nationals
+249;NFL (AFC);9/4/2022;Los Angeles;Houston Texans;Los Angeles Chargers
+250;NHL (Central);11/27/2023;Minnesota;Winnipeg Jets;Minnesota Wild
+251;MLB;1/16/2023;New York City;Baltimore Orioles;New York Mets
+252;NBA (Pacific);12/22/2024;Los Angeles;Phoenix Suns;LA Clippers
+253;NBA (Central);6/18/2022;Detroit;Chicago Bulls;Detroit Pistons
+254;NBA (Southwest);5/30/2023;Houston;San Antonio Spurs;Houston Rockets
+255;NBA (Central);7/18/2023;Detroit;Indiana Pacers;Detroit Pistons
+256;NBA (Pacific);2/22/2024;Los Angeles;Sacramento Kings;LA Clippers
+257;NBA (Southeast);4/29/2022;Washington;Charlotte Hornets;Washington Wizards
+258;NHL (Central);12/8/2023;Nashville;Colorado Avalanche;Nashville Predators
+259;NHL (Pacific);5/25/2023;San Jose;Vancouver Canucks;San Jose Sharks
+260;NHL (Metropolitan);6/19/2024;Philadelphia;New York Rangers;Philadelphia Flyers
+261;NHL (Pacific);4/7/2024;Los Angeles;Edmonton Oilers;Los Angeles Kings
+262;MLB;11/22/2022;Colorado;Houston Astros;Colorado Rockies
+263;NHL (Metropolitan);4/29/2023;Raleigh;Columbus Blue Jackets;Carolina Hurricanes
+264;NHL (Pacific);10/18/2023;Anaheim;Vancouver Canucks;Anaheim Ducks
+265;NBA (Southwest);7/27/2024;Memphis;Houston Rockets;Memphis Grizzlies
+266;NBA (Central);2/19/2024;Indianapolis;Chicago Bulls;Indiana Pacers
+267;NBA (Southwest);6/5/2024;Memphis;Dallas Mavericks;Memphis Grizzlies
+268;NBA (Northwest);4/15/2023;Oklahoma City;Denver Nuggets;Oklahoma City Thunder
+269;NHL (Metropolitan);11/1/2022;Pittsburgh;New Jersey Devils;Pittsburgh Penguins
+270;NBA (Central);6/27/2022;Indianapolis;Cleveland Cavaliers;Indiana Pacers
+271;MLB;4/19/2023;Tampa Bay;San Francisco Giants;Tampa Bay Rays
+272;NHL (Metropolitan);4/29/2022;Washington;New York Islanders;Washington Capitals
+273;NHL (Metropolitan);12/4/2024;Columbus;Philadelphia Flyers;Columbus Blue Jackets
+274;NBA (Southwest);11/5/2024;Houston;New Orleans Pelicans;Houston Rockets
+275;NFL (NFC);12/15/2022;Chicago;New York Giants;Chicago Bears
+276;NHL (Pacific);7/18/2024;Anaheim;Vegas Golden Knights;Anaheim Ducks
+277;NBA (Atlantic);3/26/2023;New York City;Boston Celtics;New York Knicks
+278;NFL (NFC);7/9/2023;San Francisco;New York Giants;San Francisco 49ers
+279;NBA (Pacific);11/13/2023;Los Angeles;Phoenix Suns;Los Angeles Lakers
+280;NHL (Central);2/22/2022;St. Louis;Chicago Blackhawks;St. Louis Blues
+281;NHL (Atlantic);7/13/2023;Ottawa;Boston Bruins;Ottawa Senators
+282;NHL (Metropolitan);2/10/2023;Pittsburgh;New York Islanders;Pittsburgh Penguins
+283;NHL (Atlantic);9/16/2023;Florida;Ottawa Senators;Florida Panthers
+284;NBA (Central);10/3/2022;Cleveland;Chicago Bulls;Cleveland Cavaliers
+285;NFL (NFC);9/10/2022;Green Bay;Arizona Cardinals;Green Bay Packers
+286;NHL (Pacific);12/9/2022;Anaheim;Vegas Golden Knights;Anaheim Ducks
